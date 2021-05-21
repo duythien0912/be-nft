@@ -28,7 +28,7 @@ export default function Header() {
     <div>
       <Navbar collapseOnSelect bg="light" variant="light">
         <Navbar.Brand href="#">
-          BSC Coupon
+          BSC BE COIN
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Nav className="mr-auto">

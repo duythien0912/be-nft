@@ -1,0 +1,9 @@
+name = "be-nft"
+type = 'webpack'
+account_id = 'fee525c4727430789c9461317458a162'
+route = ''
+zone_id = ''
+usage_model = ''
+workers_dev = true
+target_type = "webpack"
+site = {bucket =  "./build",entry-point = "be-nft"}
