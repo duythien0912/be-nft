@@ -3,7 +3,7 @@ import { Col, Image, Row } from "react-bootstrap";
 export default function FlowBlock() {
   const imgSrc = "/cover.jpeg";
   return (
-    <div className="flow-block">
+    <div className="fadein flow-block">
       <Image className="img-bg-flow-block" src={imgSrc} rounded fluid></Image>
       <div className="bg-flow-block"></div>
       <div className="left-bg-flow-block"></div>

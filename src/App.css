@@ -42,6 +42,38 @@
     transform: rotate(360deg);
   }
 }
+@keyframes fadein {
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-moz-keyframes fadein { /* Firefox */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-o-keyframes fadein { /* Opera */
+  from {
+      opacity:0;
+  }
+  to {
+      opacity: 1;
+  }
+}
 
 .loading {
   display: inline-block;
@@ -52,6 +84,13 @@
   border-top-color: black;
   animation: spin 1s ease-in-out infinite;
   -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+.fadein{
+  animation: fadein 1s;
+  -moz-animation: fadein 1s; /* Firefox */
+  -webkit-animation: fadein 1s; /* Safari and Chrome */
+  -o-animation: fadein 1s; /* Opera */
 }
 
 @keyframes spin {
@@ -187,6 +226,7 @@
 
 .top-navbar{
   background-color: #212529 !important;
+  /* border-bottom: 5px solid #343a40; */
 }
 
 
@@ -243,8 +283,12 @@
 }
 
 .flow-main-image{
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .cover-block{
   position: relative;
@@ -252,9 +296,9 @@
 
 .cover-block-btn{
   position: absolute;
-  bottom: 0px;
+  bottom: -30%;
   left: 50%;
-  transform: translate(-50%, 40%);
+  transform: translate(-50%, -50%);
   width: 50px;
   height: 50px;
   border: none;
@@ -304,4 +348,17 @@
   border-image-slice: 1;
   border-bottom: 5px solid;
   border-image-source: linear-gradient(-100deg, #ff0079, #2dceef);
+}
+
+.coin-logo{
+  height: 22px;
+  width: 22px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.coin-name{
+  font-weight: bold;
+  color: #ffffffaf;
+  line-height: 22px;
 }

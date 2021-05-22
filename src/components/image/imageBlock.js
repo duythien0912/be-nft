@@ -4,9 +4,9 @@ export default function ImageBlock() {
     const imgSrc =
     "/cover.jpeg";
   return (
-    <Col>
+    <Col className="">
       {[1, 2, 3].map((val) => (
-        <Row className="mb-4">
+        <Row className="mb-4 fadein">
           <Col>
             <Image src={imgSrc} rounded fluid />
           </Col>

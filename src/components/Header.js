@@ -7,6 +7,7 @@ import {
   InputGroup,
   Row,
   Col,
+  Image,
   Container,
 } from "react-bootstrap";
 
@@ -81,16 +82,16 @@ export default function Header() {
               width="30"
               height="30"
               className="d-inline-block align-top"
-            />{" "}
+            />
             BSC BE COIN
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Nav className="mr-auto">
             <Nav.Link href="#create-coupon">Create Coupon</Nav.Link>
             <Nav.Link href="#token-faucet">Faucet</Nav.Link>
-            <Nav.Link href="#create-coupon">NFT</Nav.Link>
-            <Nav.Link href="#token-faucet">Account</Nav.Link>
-            <Nav.Link href="#token-faucet">Music</Nav.Link>
+            <Nav.Link href="#0">NFT</Nav.Link>
+            <Nav.Link href="#0">Account</Nav.Link>
+            <Nav.Link href="#0">Music</Nav.Link>
           </Nav>
           <Nav>
             <InputGroup className="">
@@ -141,14 +142,25 @@ export default function Header() {
         </SuccessModal>
       </div>
 
-      <Container className="bnb-price mt-0">
+      <Container className="bnb-price mt-2">
         <Row>
           <Col></Col>
-          {bnbPrice && (
-            <p className="">
-              1 BNB = {bnbPrice.substr(0, bnbPrice.length - 6)} USDT
-            </p>
-          )}
+          <div className="mr-4 pr-2">
+            <span style={{display: 'flex'}}>
+              <span style={{ color: "transparent" }}>Loading...</span>
+              {bnbPrice && (
+                <>
+                  <Image src="/bnb.png" className="coin-logo" />
+
+                  <span className="coin-name">1 BNB ≈ </span>
+                  <Image src="/usdt.svg" className="coin-logo" />
+                  <span className="coin-name">
+                    {bnbPrice.substr(0, bnbPrice.length - 6)} USDT
+                  </span>
+                </>
+              )}
+            </span>
+          </div>
         </Row>
       </Container>
     </>

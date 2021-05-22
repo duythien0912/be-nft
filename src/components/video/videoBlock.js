@@ -2,9 +2,9 @@ import { Col, Image, Row } from "react-bootstrap";
 
 export default function VideoBlock() {
   return (
-    <Col>
+    <Col className="">
       {[1, 2, 3].map((val) => (
-        <Row className="mb-4">
+        <Row className="mb-4 fadein">
           <Col>
             <Image src="https://placeholder.pics/svg/800" rounded fluid />
           </Col>

@@ -166,9 +166,9 @@ export default function Main() {
           You don't have metamask. Please install first !!
         </div>
       )} */}
-      <Container className="pt-2 mb-5">
+      <Container className="mb-5">
         <Col>
-          <Row className="ml-2 mb-4 mt-2">
+          <Row className="ml-2 mb-4">
             <h2 className="font-weight-bold display-6">Flow</h2>
           </Row>
           <Row>
