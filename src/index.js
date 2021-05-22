@@ -1,32 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import { initContract } from './web3/init';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { initContractWithOutAccount } from "./web3/init";
+import "./index.css";
 
-if (
-    typeof window.ethereum !== 'undefined' &&
-    window.ethereum.selectedAddress &&
-    window.ethereum.isConnected()
-) {
-    initContract()
-        .then(() => {
-            ReactDOM.render(
-                <App />,
-                document.querySelector('#root')
-            )
-        })
-        .catch(console.error);
-} else if (typeof window.ethereum !== 'undefined') {
-    initContract()
-        .then(() => {
-            ReactDOM.render(
-                <App />,
-                document.querySelector('#root')
-            )
-        });
-} else {
-    ReactDOM.render(
-        <App />,
-        document.querySelector('#root')
-    )
+try {
+  initContractWithOutAccount().then(() => {
+    ReactDOM.render(<App />, document.querySelector("#root"));
+  });
+} catch (e) {
+  ReactDOM.render(<App />, document.querySelector("#root"));
 }
