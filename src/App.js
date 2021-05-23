@@ -1,10 +1,13 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
+
 import "./App.css";
+
 import { Switch, HashRouter, Route, Redirect } from "react-router-dom";
 import history from "./components/history";
 import Header from "./components/Header";
 import CreateCoupon from "./components/CreateCoupon";
+import MarketPage from "./components/market/marketPage";
 import Main from "./components/Main";
 import ViewCoupon from "./components/ViewCoupon";
 import Faucet from "./components/Faucet";
@@ -17,6 +20,9 @@ function App() {
       </Route>
       <Route path="/create-coupon" exact>
         <CreateCoupon />
+      </Route>
+      <Route path="/market" exact>
+        <MarketPage />
       </Route>
       <Route path="/view/:couponAddress/:nftToken/:buyToken" exact>
         <ViewCoupon />

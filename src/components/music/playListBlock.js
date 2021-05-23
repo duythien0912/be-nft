@@ -4,7 +4,7 @@ export default function PlayListBlock() {
   const imgSrc = "/cover.jpeg";
 
   return (
-    <div className="pb-5">
+    <div className="">
       <Row xs={12} className="m-0 mb-5 align-items-center">
         <Col xs={2} className="">
           <Image className="fadein" src={imgSrc} rounded fluid />

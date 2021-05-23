@@ -168,9 +168,9 @@ export default function Main() {
           You don't have metamask. Please install first !!
         </div>
       )} */}
-      <Container className="mb-5">
+      <Container className="mb-4">
         <Col>
-          <Row className="ml-2 mb-4">
+          <Row className="ml-2 ">
             <h2 className="font-weight-bold display-6">Flow</h2>
           </Row>
           <Row>
@@ -186,7 +186,7 @@ export default function Main() {
           </Row>
         </Col>
       </Container>
-      <Container className="pt-1 mb-5">
+      <Container className="pt-0 mb-5">
         <Col className="p-0">
           <Row className="ml-4 mb-5 mt-5">
             <Nav

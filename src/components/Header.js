@@ -60,6 +60,7 @@ export default function Header() {
   useEffect(() => {
     async function _fetchData() {
       await initContract();
+      setUserAddress(window?.userAddress);
       setBnbPrice(await getBnbPrice());
       setInterval(async () => {
         setBnbPrice(await getBnbPrice());
@@ -69,9 +70,9 @@ export default function Header() {
   }, []);
   return (
     <>
-      <div className="top-navbar-container">
+      <div className="top-navbar-container mb-4">
         <Navbar
-          className="top-navbar pt-2"
+          className="top-navbar pt-2 pl-5 pr-5"
           fixed="top"
           collapseOnSelect
           variant="dark"
@@ -88,11 +89,18 @@ export default function Header() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Nav className="mr-auto">
-            <Nav.Link href="#create-coupon">Create Coupon</Nav.Link>
-            <Nav.Link href="#token-faucet">Faucet</Nav.Link>
-            <Nav.Link href="#0">NFT</Nav.Link>
-            <Nav.Link href="#0">Account</Nav.Link>
-            <Nav.Link href="#0">Music</Nav.Link>
+            <Nav.Link className="menu-btn menu-main-btn" href="#market">
+              Market
+            </Nav.Link>
+            <Nav.Link className="menu-btn" href="#nft">
+              NFT
+            </Nav.Link>
+            {/* <Nav.Link className="menu-btn" href="#create-coupon">
+              Create Coupon
+            </Nav.Link>
+            <Nav.Link className="menu-btn" href="#token-faucet">
+              Faucet
+            </Nav.Link> */}
           </Nav>
           <Nav>
             <InputGroup className="">
@@ -151,12 +159,14 @@ export default function Header() {
         </SuccessModal>
       </div>
 
-      <Container className="bnb-price mt-2">
+      <Container className="bnb-price mt-2 pr-3">
         <Row>
           <Col></Col>
           <div className="mr-4 pr-2">
             <span style={{ display: "flex" }}>
-              <span style={{ height: "25px", color: "transparent" }}>Loading...</span>
+              <span style={{ height: "25px", color: "transparent" }}>
+                Loading...
+              </span>
               {bnbPrice && (
                 <div className="fadein">
                   <Image src="/bnb.png" className="coin-logo" />

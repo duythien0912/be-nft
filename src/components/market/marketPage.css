@@ -1,0 +1,37 @@
+
+
+.market-bg-image{
+    margin-top: -33px;
+    background-image: url("./market-bg.jpeg");
+
+    /* Full height */
+    height: calc(100vh - 33px);
+  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    /* filter: blur(4px);
+    -webkit-filter: blur(4px); */
+    filter: blur(4px) brightness(60%);
+  
+}
+
+
+.market-bg-text{
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+
+.market-heading{
+    font-size: 48px;
+    font-weight: 900;
+    text-align: center;
+}
