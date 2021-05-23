@@ -430,3 +430,30 @@ vertical-align: middle;
   font-weight: bold;
   color: #ffffffe6;
 }
+
+.header-search{
+  background-color: #555;
+  border-radius: 80px;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.275rem 1.25rem 0.375rem 0.25rem;
+}
+
+.header-search:focus{
+  background-color: #555;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  box-shadow: none;
+}
+
+.header-search::placeholder{
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-prepend .input-group-text{
+  background-color: #555;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  border-radius: 80px;
+  padding: 0.375rem 0.25rem 0.375rem 1.25rem;
+}

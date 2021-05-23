@@ -76,14 +76,14 @@ export default function Header() {
           variant="dark"
         >
           <Navbar.Brand href="#">
-            <img
+            {/* <img
               alt=""
               src="/logo192.png"
               width="30"
               height="30"
               className="d-inline-block align-top"
-            />
-            BSC BE COIN
+            /> */}
+            BE COIN
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Nav className="mr-auto">
@@ -95,11 +95,17 @@ export default function Header() {
           </Nav>
           <Nav>
             <InputGroup className="">
+              <InputGroup.Prepend className="search-prepend">
+                <InputGroup.Text id="basic-addon1">
+                  <span class="fa fa-search form-control-feedback"></span>
+                </InputGroup.Text>
+              </InputGroup.Prepend>
+
               <FormControl
                 icon
                 type="text"
-                placeholder="Search"
-                className="mr-sm-2"
+                placeholder="Search..."
+                className="header-search mr-sm-2"
               />
             </InputGroup>
           </Nav>
@@ -111,7 +117,9 @@ export default function Header() {
                   : userAddress}
               </Nav.Link>
             ) : (
-              <Button className="login-btn" onClick={handleConnectMetamask}>Connect Metamask</Button>
+              <Button className="login-btn" onClick={handleConnectMetamask}>
+                Connect Metamask
+              </Button>
             )}
           </Nav>
         </Navbar>
@@ -146,7 +154,7 @@ export default function Header() {
         <Row>
           <Col></Col>
           <div className="mr-4 pr-2">
-            <span style={{display: 'flex'}}>
+            <span style={{ display: "flex" }}>
               <span style={{ color: "transparent" }}>Loading...</span>
               {bnbPrice && (
                 <>
