@@ -15,6 +15,8 @@ import Loading from "./Loading";
 import { initContractWithOutAccount } from "../web3/init";
 
 import MusicBlock from "./music/musicBlock";
+import MusicTable from "./music/musicTable";
+import PlayListBlock from "./music/playListBlock";
 import ImageBlock from "./image/imageBlock";
 import VideoBlock from "./video/videoBlock";
 import FlowBlock from "./flow/flowBlock";
@@ -225,8 +227,17 @@ export default function Main() {
               </Nav.Item>
             </Nav>
           </Row>
-          {bodyTabKey && bodyTabKey === "music" && <MusicBlock />}
-          {bodyTabKey && bodyTabKey === "image" && <ImageBlock />}
+          {bodyTabKey && bodyTabKey === "music" && (
+            <>
+              <PlayListBlock />
+              <MusicTable />
+            </>
+          )}
+          {bodyTabKey && bodyTabKey === "image" && (
+            <>
+              <ImageBlock />
+            </>
+          )}
           {bodyTabKey && bodyTabKey === "video" && <VideoBlock />}
         </Col>
       </Container>

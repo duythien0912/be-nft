@@ -1,6 +1,6 @@
 import React from "react";
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
+import "./App.css";
 import { Switch, HashRouter, Route, Redirect } from "react-router-dom";
 import history from "./components/history";
 import Header from "./components/Header";

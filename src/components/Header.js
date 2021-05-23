@@ -70,7 +70,7 @@ export default function Header() {
     <>
       <div className="top-navbar-container">
         <Navbar
-          className="top-navbar"
+          className="top-navbar pt-2"
           fixed="top"
           collapseOnSelect
           variant="dark"
@@ -111,7 +111,7 @@ export default function Header() {
                   : userAddress}
               </Nav.Link>
             ) : (
-              <Button onClick={handleConnectMetamask}>Connect Metamask</Button>
+              <Button className="login-btn" onClick={handleConnectMetamask}>Connect Metamask</Button>
             )}
           </Nav>
         </Navbar>

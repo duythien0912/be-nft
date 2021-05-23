@@ -314,10 +314,9 @@
   color: #ffffff98;
 }
 
-.flow-caption{
+.caption{
   font-size: 14px;
   color: #ffffff98;
-
 }
 
 .flow-title-block{
@@ -361,4 +360,73 @@
   font-weight: bold;
   color: #ffffffaf;
   line-height: 22px;
+}
+
+.music-btn{
+  background: linear-gradient(
+    268.6deg
+    , #ff0079 -39.35%, #2d9bef 90.69%, #35edfb 140.3%);
+        background-color: transparent;
+        border-radius: 40px !important;
+border: none !important;
+        width: 180px;
+        height: 40px;
+        font-weight: bold !important;
+}
+
+.login-btn{
+  background: linear-gradient(
+    268.6deg
+    , #ff0079 -39.35%, #2d9bef 90.69%, #35edfb 140.3%);
+        background-color: transparent;
+        border-radius: 40px !important;
+border: none !important;
+        font-weight: bold !important;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        padding-bottom: 0.4rem;
+}
+
+.music-icon{
+  width: 35px;
+  height: 35px;
+}
+
+.music-table{
+  background-color: transparent !important;
+}
+
+.music-table th, .music-table td{
+  padding: 0.75rem 0.25rem !important;
+  text-align: start;
+  vertical-align: middle;
+}
+
+.music-table .logo-col{
+width: 50px;
+}
+
+.music-table .number-col{
+width: 32px;
+}
+
+.music-table .time-col{
+width: 100px;
+text-align: center;
+vertical-align: middle;
+
+}
+
+.image-block{
+  background-color: #404040;
+  border-radius: 8px;
+}
+.image-block img{
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.image-block .title{
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffffe6;
 }

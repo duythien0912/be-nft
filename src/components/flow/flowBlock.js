@@ -36,7 +36,7 @@ export default function FlowBlock() {
             </Row>
             <Row className="mt-4"></Row>
             <Row className="justify-content-center">
-              <p className="flow-caption">Based on your listening history</p>
+              <p className="caption">Based on your listening history</p>
             </Row>
           </Col>
         </Row>
