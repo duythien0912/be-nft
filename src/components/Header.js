@@ -60,6 +60,7 @@ export default function Header() {
   useEffect(() => {
     async function _fetchData() {
       await initContract();
+      setBnbPrice(await getBnbPrice());
       setInterval(async () => {
         setBnbPrice(await getBnbPrice());
       }, 3000);
@@ -155,9 +156,9 @@ export default function Header() {
           <Col></Col>
           <div className="mr-4 pr-2">
             <span style={{ display: "flex" }}>
-              <span style={{ color: "transparent" }}>Loading...</span>
+              <span style={{ height: "25px", color: "transparent" }}>Loading...</span>
               {bnbPrice && (
-                <>
+                <div className="fadein">
                   <Image src="/bnb.png" className="coin-logo" />
 
                   <span className="coin-name">1 BNB ≈ </span>
@@ -165,7 +166,7 @@ export default function Header() {
                   <span className="coin-name">
                     {bnbPrice.substr(0, bnbPrice.length - 6)} USDT
                   </span>
-                </>
+                </div>
               )}
             </span>
           </div>

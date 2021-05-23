@@ -31,7 +31,7 @@ export default function MusicTable() {
                 <Image
                   className="music-icon mr-2 fadein"
                   src={imgSrc}
-                  roundedCircle
+                  rounded
                   fluid
                 />
               </td>
