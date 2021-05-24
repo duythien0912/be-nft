@@ -13,8 +13,7 @@
     
     /* filter: blur(4px);
     -webkit-filter: blur(4px); */
-    filter: blur(4px) brightness(60%);
-  
+    filter: blur(0px) brightness(60%);
 }
 
 
@@ -34,4 +33,9 @@
     font-size: 48px;
     font-weight: 900;
     text-align: center;
+}
+
+.nft-card{
+  background-color: #262626;
+  border-radius: 8px;
 }

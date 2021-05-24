@@ -6,7 +6,7 @@ export default function MusicTable() {
   return (
     <>
       <Table
-        className="music-table"
+        className="music-table ml-2 mr-2"
         borderless={true}
         bordered={false}
         striped={false}

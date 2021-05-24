@@ -506,3 +506,25 @@ vertical-align: middle;
 .menu-btn{
   font-weight: bold;
 }
+.user-profile-menu{
+  color: white !important;
+}
+
+.menu-account{
+  position: relative;
+}
+
+.menu-dot{
+  height: 3px;
+  width: 3px;
+  border-radius: 50%;
+  background-color: #2dceef;
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.gray-text{
+  color: #99999F;
+}

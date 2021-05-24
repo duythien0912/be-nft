@@ -92,6 +92,10 @@ export default function Header() {
             <Nav.Link className="menu-btn menu-main-btn" href="#market">
               Market
             </Nav.Link>
+            <Nav.Link className="menu-btn menu-account" href="#account">
+              Account
+              <div className="menu-dot"></div>
+            </Nav.Link>
             <Nav.Link className="menu-btn" href="#nft">
               NFT
             </Nav.Link>
@@ -120,10 +124,16 @@ export default function Header() {
           </Nav>
           <Nav>
             {isHaveUser ? (
-              <Nav.Link href="#0">
-                {userAddress.length >= 8
-                  ? userAddress.substring(0, 8) + "..."
-                  : userAddress}
+              <Nav.Link
+                href="#0"
+                className="ml-3 user-profile-menu justify-content-center align-items-center"
+              >
+                <Row>
+                  <Image src="/user.svg" className="coin-logo mr-2" />
+                  {userAddress.length >= 8
+                    ? userAddress.substring(0, 8) + "..."
+                    : userAddress}
+                </Row>
               </Nav.Link>
             ) : (
               <Button className="login-btn" onClick={handleConnectMetamask}>

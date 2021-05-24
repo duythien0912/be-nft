@@ -10,7 +10,7 @@ export default function PlayListBlock() {
           <Image className="fadein" src={imgSrc} rounded fluid />
         </Col>
         <Col xs={8} className="text-left">
-          <p className="">Playlist</p>
+          <p className="mt-2">Playlist</p>
           <p className="display-4 font-weight-bold ">TOP MUSIC CHART</p>
           <p className="display-6">Golden age of rock. Cover: Led Zeppelin</p>
           <p className="caption">88 Songs, 9 hr 13 min</p>
