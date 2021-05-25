@@ -11,7 +11,13 @@ export default function ImageBlock({ allNft }) {
             return (
               <Col key={key} className="mb-5 fadein" xs={2}>
                 <div className="image-block">
-                  <Image src={allNft[key].baseTokenURI} fluid />
+                  <a
+                    href={allNft[key].baseTokenURI}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Image src={allNft[key].baseTokenURI} fluid />
+                  </a>
                   <p className="one-line title text-left pt-1 pl-2 pr-2 pb-1 mb-0">
                     {allNft[key].name}
                   </p>

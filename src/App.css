@@ -315,7 +315,17 @@
   border-radius: 50%;
   color: white;
   font-size: 30px;
-  line-height: 30px;
+  line-height: 48px;
+}
+
+.cover-block-btn:hover{
+  color: white;
+  text-decoration: unset;
+}
+
+.play-block-btn:hover{
+  color: #ffffff98;
+  text-decoration: unset;
 }
 
 .play-block-btn{
@@ -558,4 +568,13 @@ vertical-align: middle;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.playlist-btn{
+  padding: 0.5rem 2.5rem;
+  color: white;
+}
+
+.playlist-btn:hover{
+  color: white;
 }

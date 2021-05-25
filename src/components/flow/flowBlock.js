@@ -2,6 +2,7 @@ import { Col, Image, Row } from "react-bootstrap";
 
 export default function FlowBlock({
   imgSrc = "/cover.jpeg",
+  href = "",
   title = "Flow",
   subTitle = "Your Personal Soundtrack",
   caption = "Based on your listening history",
@@ -22,14 +23,20 @@ export default function FlowBlock({
               width={160}
               fluid
             ></Image>
-            <button
-              className="cover-block-btn"
-              type="button"
-              aria-pressed="false"
-              aria-label="play"
-            >
-              <span className="ml-1">&#x25b6;</span>
-            </button>
+            {href && (
+              <a
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                className="cover-block-btn"
+                type="button"
+                aria-pressed="false"
+                aria-label="play"
+                role="button"
+              >
+                <span className="ml-1 pt-2">&#x25b6;</span>
+              </a>
+            )}
           </Col>
           <Col className="align-self-center flow-title-block" xs>
             <Row className="justify-content-center">

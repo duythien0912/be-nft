@@ -12,6 +12,7 @@ import AccountPage from "./components/account/accountPage";
 import Main from "./components/Main";
 import ViewCoupon from "./components/ViewCoupon";
 import Faucet from "./components/Faucet";
+import NftPage from "./components/nft/nftPage";
 
 function App() {
   const routes = (
@@ -27,6 +28,9 @@ function App() {
       </Route>
       <Route path="/account" exact>
         <AccountPage />
+      </Route>
+      <Route path="/nft" exact>
+        <NftPage />
       </Route>
       <Route path="/view/:couponAddress/:nftToken/:buyToken" exact>
         <ViewCoupon />

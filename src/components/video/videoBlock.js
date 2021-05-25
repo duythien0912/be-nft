@@ -9,7 +9,7 @@ export default function VideoBlock({ allNft }) {
     <Col className="">
       <Row>
         {Object.keys(allNft || {}).map(function (key, i) {
-            if (allNft[key].type === "video") {
+          if (allNft[key].type === "video") {
             return (
               <Col key={key} xs={4} className="mb-4 fadein">
                 <FlowBlock
@@ -17,6 +17,7 @@ export default function VideoBlock({ allNft }) {
                   title={allNft[key].type}
                   subTitle={allNft[key].name}
                   caption={allNft[key].couponTokenSymbol}
+                  href={allNft[key].dataURI || ""}
                 />
               </Col>
             );

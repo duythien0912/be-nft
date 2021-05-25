@@ -10,7 +10,7 @@ import "./accountPage.css";
 
 export default function AccountPage() {
   var profileImg = "/profile.svg";
-  const [bodyTabKey, setTabKey] = useState("myNFT");
+  const [bodyTabKey, setTabKey] = useState("mintNFT");
 
   return (
     <>
@@ -33,7 +33,7 @@ export default function AccountPage() {
           onSelect={(k) => setTabKey(k)}
           defaultActiveKey={bodyTabKey}
         >
-          <Nav.Item>
+          {/* <Nav.Item>
             <Nav.Link
               className={`tab-title font-weight-bold display-6 ${
                 bodyTabKey && bodyTabKey === "myNFT" && "tab-title-active"
@@ -42,7 +42,7 @@ export default function AccountPage() {
             >
               MY NFTS
             </Nav.Link>
-          </Nav.Item>
+          </Nav.Item> */}
           <Nav.Item>
             <Nav.Link
               className={`tab-title font-weight-bold display-6 ${
@@ -53,7 +53,7 @@ export default function AccountPage() {
               MINT NFTS
             </Nav.Link>
           </Nav.Item>
-          <Nav.Item>
+          {/* <Nav.Item>
             <Nav.Link
               className={`tab-title font-weight-bold display-6 ${
                 bodyTabKey &&
@@ -64,7 +64,7 @@ export default function AccountPage() {
             >
               CONFIG
             </Nav.Link>
-          </Nav.Item>
+          </Nav.Item> */}
         </Nav>
 
         {bodyTabKey && bodyTabKey === "myNFT" && (
@@ -77,7 +77,7 @@ export default function AccountPage() {
               </Col>
             </Container>
             <MusicTable />
-            <div class="dropdown-divider m-5"></div>
+            <div className="dropdown-divider m-5"></div>
             <Container className="mb-3">
               <Col>
                 <Row className="">
@@ -86,7 +86,7 @@ export default function AccountPage() {
               </Col>
             </Container>
             <ImageBlock />
-            <div class="dropdown-divider m-5"></div>
+            <div className="dropdown-divider m-5"></div>
             <Container className="mb-3">
               <Col>
                 <Row className="">

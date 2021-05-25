@@ -19,6 +19,7 @@ export default function MusicTable({ allNft }) {
             <th className="caption">ARTIST</th>
             <th className="caption">ALBUM</th>
             <th className="caption time-col">TIME</th>
+            {/* <th className="caption time-col">PRICE</th> */}
             <th className="caption"></th>
           </tr>
         </thead>
@@ -43,10 +44,17 @@ export default function MusicTable({ allNft }) {
                     {Math.floor(Math.random() * 4) + 1}:
                     {Math.floor(Math.random() * 60) + 1}
                   </td>
+                  {/* <td className="caption time-col">
+                    {allNft[key].ticketPrice} {allNft[key].description}
+                  </td> */}
                   {/* <Button className="normal-btn">Play</Button> */}
                   <td className="text-center">
-                    <button
-                      className="play-block-btn"
+                    <a
+                      href={allNft[key].dataURI}
+                      target="_blank"
+                      rel="noreferrer"
+                      role="button"
+                      className="play-block-btn pt-2"
                       type="button"
                       aria-pressed="false"
                       aria-label="play"
@@ -54,7 +62,7 @@ export default function MusicTable({ allNft }) {
                       <span className="ml-1">&#x25b6;</span>
 
                       {/* <span className="ml-1">&#43;</span> */}
-                    </button>
+                    </a>
                   </td>
                 </tr>
               );

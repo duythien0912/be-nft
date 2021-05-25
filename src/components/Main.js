@@ -97,7 +97,7 @@ export default function Main() {
     if (!isMetamaskInstalled()) {
       setLoading(false);
       setNoMetamask(true);
-    } else if (listCoupons.length === 0) {
+    } else if (Object.values(allNft || {}).length === 0) {
       getCoupons();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -181,6 +181,7 @@ export default function Main() {
                       title={allNft[key].type}
                       subTitle={allNft[key].name}
                       caption={allNft[key].couponTokenSymbol}
+                      href={allNft[key].dataURI || ""}
                     />
                   </Col>
                 );
@@ -242,7 +243,9 @@ export default function Main() {
               <ImageBlock allNft={allNft} />
             </>
           )}
-          {bodyTabKey && bodyTabKey === "video" && <VideoBlock allNft={allNft} />}
+          {bodyTabKey && bodyTabKey === "video" && (
+            <VideoBlock allNft={allNft} />
+          )}
         </Col>
       </Container>
     </div>

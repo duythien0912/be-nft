@@ -115,7 +115,7 @@ export default function CreateNft() {
         setProcessing(true);
       })
       .on("receipt", (_) => {
-        console.log('receipt: ',_)
+        console.log("receipt: ", _);
         setProcessing(false);
         setSuccessModal({
           open: true,
@@ -171,14 +171,19 @@ export default function CreateNft() {
       };
     });
   };
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 
   useEffect(() => {
-    if (
-      typeof window.ethereum === "undefined" ||
-      !window.ethereum.selectedAddress
-    ) {
-      setShowMetamaskError(true);
-    }
+    sleep(1000).then((_) => {
+      if (
+        typeof window.ethereum === "undefined" ||
+        !window.ethereum.selectedAddress
+      ) {
+        setShowMetamaskError(true);
+      }
+    });
   }, []);
 
   return (
@@ -211,7 +216,7 @@ export default function CreateNft() {
                   <Form.Control
                     className="mb-4"
                     type="text"
-                    placeholder="NFT Token Name"
+                    placeholder="NFT Name"
                     onChange={(e) =>
                       setAddCouponState({
                         ...addCouponState,
@@ -231,7 +236,7 @@ export default function CreateNft() {
                   <Form.Control
                     className="mb-4"
                     type="text"
-                    placeholder="NFT Token Description"
+                    placeholder="NFT Description"
                     onChange={(e) =>
                       setAddCouponState({
                         ...addCouponState,
@@ -380,9 +385,9 @@ export default function CreateNft() {
               </Row>
 
               {addCouponState.couponType !== "image" &&
-                (addCouponState.couponType !== "playlist" && (
+                addCouponState.couponType !== "playlist" && (
                   <>
-                    <Row className="mt-4">
+                    <Row className={addCouponState.image && "mt-4"}>
                       <Col className="text-header">
                         Data file (Music/Image/Video):
                       </Col>
@@ -402,7 +407,7 @@ export default function CreateNft() {
                       </Col>
                     </Row>
                   </>
-                ))}
+                )}
             </Card.Body>
 
             <Card.Footer className="text-center">

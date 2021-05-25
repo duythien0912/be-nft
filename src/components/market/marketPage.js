@@ -1,8 +1,67 @@
+import React, { useEffect, useState } from "react";
 import { Col, Image, Row, Container, Button } from "react-bootstrap";
+import { initContractWithOutAccount } from "../../web3/init";
+import Loading from "../Loading";
+
 import "./marketPage.css";
 
 export default function MarketPage() {
   const imgSrc = "/cover.jpeg";
+  const [allNft, setAllNft] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  const getCoupons = async () => {
+    if (window.couponFactory == null) {
+      await initContractWithOutAccount();
+      getCoupons();
+      return;
+    }
+    const allCoupons = [];
+    const allCouponsMap = {};
+    const couponCount = await window.couponFactory.methods
+      .totalCoupons()
+      .call();
+
+    if (Number(couponCount) === 0) {
+      setLoading(false);
+    }
+
+    for (let i = couponCount - 1; i >= 0; i--) {
+      const distCoupon = await window.couponFactory.methods
+        .allCoupons(i)
+        .call();
+
+      allCoupons.push(distCoupon);
+      if (
+        distCoupon.couponTokenName &&
+        distCoupon.couponTokenName.includes("|")
+      ) {
+        distCoupon.type = distCoupon.couponTokenName.split("|")[0];
+        distCoupon.name = distCoupon.couponTokenName.split("|")[1];
+      }
+      allCouponsMap[distCoupon.couponAddress] = distCoupon;
+    }
+
+    setAllNft(allCouponsMap);
+    setLoading(false);
+  };
+
+  const isMetamaskInstalled = () => {
+    return typeof window.ethereum !== "undefined";
+  };
+
+  useEffect(() => {
+    if (!isMetamaskInstalled()) {
+      setLoading(false);
+    } else if (Object.values(allNft || {}).length === 0) {
+      getCoupons();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="market-container fadein">
@@ -17,39 +76,52 @@ export default function MarketPage() {
             <Button className="text-center music-btn">ISSUE NEW NFT</Button>
           </Col>
           <Col className="text-left">
-            <Button className="text-center normal-btn">TUTORIAL MINT NFT</Button>
+            <Button className="text-center normal-btn">
+              TUTORIAL MINT NFT
+            </Button>
           </Col>
         </Row>
       </Container>
       <div className="pb-5"></div>
       <div className="ml-5 mr-5 pl-5 pr-5">
-        {[1, 2, 3, 4].map((val) => (
-          <Container className=" mt-5 nft-card pt-4 pb-4">
-            <div className="">
-              <Row xs={12} className="m-0 align-items-center">
-                <Col xs={2} className="">
-                  <Image className="fadein" src={imgSrc} rounded fluid />
-                </Col>
-                <Col xs={8} className="text-left">
-                  <p className="display-6">Guitar Solos</p>
-                  <p className="gray-text mt-2">BY NICK WARREN</p>
-                  <p className="gray-text caption">
-                    I AM REALLY EXCITED TO BE PART OF THE ROCKI FAMILY WITH THIS
-                    NEW NFT RELEASE AND THIS IS A TRACK I WROTE ESPECIALLY FOR
-                    THIS. PLEASE JOIN IN AND SHARE THE EXPERIENCE WITH US, ONLY
-                    50 PIECES AVAILABLE.
-                  </p>
-                </Col>
-                <Col xs={2} className="text-right">
-                  <Button className="music-btn">BUY IN NFT</Button>
-                  <div className="pb-3"></div>
-                  <Button className="normal-btn">SHOW LIST</Button>
-                  <div className="pb-2"></div>
-                </Col>
-              </Row>
-            </div>
-          </Container>
-        ))}
+        {Object.keys(allNft || {}).map(function (key, i) {
+          return (
+            <Container className=" mt-5 nft-card pt-4 pb-4">
+              <div className="">
+                <Row xs={12} className="m-0 align-items-center">
+                  <Col xs={2} className="">
+                    <Image
+                      className="fadein"
+                      src={allNft[key].baseTokenURI}
+                      rounded
+                      fluid
+                    />
+                  </Col>
+                  <Col xs={8} className="text-left">
+                    <p className="display-6">{allNft[key].name}</p>
+                    <p className="gray-text mt-2">{allNft[key].name}</p>
+                    <p className="gray-text caption">
+                      {allNft[key].couponTokenSymbol}
+                    </p>
+                  </Col>
+                  <Col xs={2} className="text-right">
+                    <Button style={{ width: 200 }} className="music-btn">
+                      {/* BUY THIS NFT */}
+                      {allNft[key].ticketPrice} {allNft[key].description}
+                    </Button>
+                    {
+                      <div className="pb-3"></div>
+                      /* <Button style={{ width: 200 }} className="normal-btn">
+                      {allNft[key].ticketPrice} {allNft[key].description}
+                    </Button> */
+                    }
+                    <div className="pb-2"></div>
+                  </Col>
+                </Row>
+              </div>
+            </Container>
+          );
+        })}
       </div>
       <div className="pb-5"></div>
       <div className="pb-5"></div>

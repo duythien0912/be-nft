@@ -80,18 +80,18 @@ export default function Header() {
           <Navbar.Brand href="#" className="align-items-end">
             <img
               alt=""
+              src="/logo-removebg.png"
+              width="42"
+              height="42"
+              className="ml-5 d-inline-block align-top mr-1"
+            />
+            {/* <img
+              alt=""
               src="/logo-removebg2.png"
               width="42"
               height="42"
               className="d-inline-block align-top mr-1"
-            />
-            <img
-              alt=""
-              src="/logo-removebg.png"
-              width="42"
-              height="42"
-              className="d-inline-block align-top mr-1"
-            />
+            /> */}
             {/* <span className="font-weight-bold" style={{fontSize: 16}}>beCOIN</span> */}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -117,7 +117,7 @@ export default function Header() {
             <InputGroup className="">
               <InputGroup.Prepend className="search-prepend">
                 <InputGroup.Text id="basic-addon1">
-                  <span class="fa fa-search form-control-feedback"></span>
+                  <span className="fa fa-search form-control-feedback"></span>
                 </InputGroup.Text>
               </InputGroup.Prepend>
 
@@ -137,7 +137,7 @@ export default function Header() {
               >
                 <Row className="justify-content-center align-items-center">
                   <Image src="/user.svg" className="coin-logo mr-2" />
-                  {userAddress.length >= 8
+                  {userAddress && userAddress.length >= 8
                     ? userAddress.substring(0, 8) + "..."
                     : userAddress}
                 </Row>
