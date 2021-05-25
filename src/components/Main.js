@@ -137,7 +137,7 @@ export default function Main() {
 
   return (
     <div className="mb-5 pb-5">
-      {/* {!noMetamask ? (
+      {!noMetamask ? (
         listCoupons.map((element, key) =>
           element.length === 4 ? (
             <CardDeck key={key} style={{ margin: "2%" }}>
@@ -167,7 +167,7 @@ export default function Main() {
         >
           You don't have metamask. Please install first !!
         </div>
-      )} */}
+      )}
       <Container className="mb-4">
         <Col>
           <Row className="ml-2 ">

@@ -1,18 +1,7 @@
-# BSC Coupon - NFT coupon system
-
-It's an NFT based gamify coupon system.
-The user get NFTs with a unique ticket number by purchasing coupon. 
-A random coupon is given at a fixed time interval and, eliminate the number from the coupon pool. 
-The last remaining coupon becomes the lucky coupon. And the more active you are, the more likely you are to win.
-
-On each coupon creation, a smart contract gets deployed on the Binance Smart Chain. 
-
-## Won prize
-BinanceX R8 Hackathon - 3rd place
+# BSC music platform - NFT market
 
 ## Binance Smart Chain Testnet
-couponFactoryAddress: "0x4BAA43FdEC8b45756E61a99ae3C4a6A6F6BB62b5",
-tokenFaucetAddress: "0xfa2ECefC6300842A7c71fc02F16435e56d69c135",
+beFactoryAddress: "0x7f69279b83f5c201eCd8092361de0AC9E3B5ecd6",
 
 ## Tech Stack
 React.js, Solidity, IPFS, NFT, Bootstrap, BSC

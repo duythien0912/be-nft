@@ -8,6 +8,7 @@ import history from "./components/history";
 import Header from "./components/Header";
 import CreateCoupon from "./components/CreateCoupon";
 import MarketPage from "./components/market/marketPage";
+import AccountPage from "./components/account/accountPage";
 import Main from "./components/Main";
 import ViewCoupon from "./components/ViewCoupon";
 import Faucet from "./components/Faucet";
@@ -23,6 +24,9 @@ function App() {
       </Route>
       <Route path="/market" exact>
         <MarketPage />
+      </Route>
+      <Route path="/account" exact>
+        <AccountPage />
       </Route>
       <Route path="/view/:couponAddress/:nftToken/:buyToken" exact>
         <ViewCoupon />

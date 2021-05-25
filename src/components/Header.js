@@ -128,7 +128,7 @@ export default function Header() {
                 href="#0"
                 className="ml-3 user-profile-menu justify-content-center align-items-center"
               >
-                <Row>
+                <Row className="justify-content-center align-items-center">
                   <Image src="/user.svg" className="coin-logo mr-2" />
                   {userAddress.length >= 8
                     ? userAddress.substring(0, 8) + "..."

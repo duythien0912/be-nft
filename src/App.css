@@ -234,6 +234,7 @@
   margin-top: 4rem ;
   position: absolute;
   right: 4rem;
+  top: 4rem;
   z-index: 1;
 }
 
@@ -371,7 +372,8 @@
         background-color: transparent;
         border-radius: 40px !important;
 border: none !important;
-        width: 180px;
+padding: 0px 2.5rem;
+
         height: 40px;
         font-weight: bold !important;
 }
@@ -380,8 +382,8 @@ border: none !important;
   background-color: transparent;
   border-radius: 40px !important;
   border: 1px solid white !important;
-  width: 180px;
   height: 40px;
+  padding: 0px 2.5rem;
   font-weight: bold !important;
   color: white;
 }
@@ -493,7 +495,7 @@ vertical-align: middle;
   bottom:0;
   border-radius:50px; 
   padding:2px; 
-  margin: 4px -8px 4px -8px;
+  margin: 5px -8px 3px -8px;
   background:linear-gradient(268.6deg, #ff0079 -39.35%, #2d9bef 90.69%, #35edfb 140.3%); 
   -webkit-mask: 
      linear-gradient(#fff 0 0) content-box, 

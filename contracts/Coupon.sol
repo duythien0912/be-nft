@@ -1,40 +1,40 @@
 pragma solidity ^0.6.0;
+// import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v3.4.0/contracts/token/ERC721/ERC721.sol";
 import "./IBEP20.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/IERC721.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol";
 
 contract Coupon is ERC721 {
     IBEP20 public ticketBuyToken;
     uint256 public ticketPrice;
     uint256 public ticketNumber;
-    uint256 public distInterval;
-    uint256 public distCount;
-    uint256 public couponStartTime;
-    uint256 public ticketBuyEndTime;
-    uint256 internal nextDistTimestamp;
-    address internal couponWinner;
+    // uint256 public distInterval;
+    // uint256 public distCount;
+    // uint256 public couponStartTime;
+    // uint256 public ticketBuyEndTime;
+    // uint256 internal nextDistTimestamp;
+    // address internal couponWinner;
 
     event NewBuy(address buyer, uint256 ticketNumber);
 
-    mapping(uint256 => uint256) internal distResult;
-    mapping(uint256 => bool) internal alreadyDistResult;
+    // mapping(uint256 => uint256) internal distResult;
+    // mapping(uint256 => bool) internal alreadyDistResult;
 
     constructor(
         string memory _name,
         string memory _symbol,
         address _ticketBuyToken,
         uint256 _ticketBuyPrice,
-        uint256 _distInterval,
-        uint256 _ticketBuyDuration,
+        // uint256 _distInterval,
+        // uint256 _ticketBuyDuration,
         string memory _tokenURI
     )
     
     public ERC721(_name, _symbol) {
         ticketBuyToken = IBEP20(_ticketBuyToken);
         ticketPrice = _ticketBuyPrice;
-        distInterval = _distInterval;
-        couponStartTime = block.timestamp;
-        ticketBuyEndTime = couponStartTime + (_ticketBuyDuration * 1 minutes);
+        // distInterval = _distInterval;
+        // couponStartTime = block.timestamp;
+        // ticketBuyEndTime = couponStartTime + (_ticketBuyDuration * 1 minutes);
 
         _setBaseURI(_tokenURI);
     }
@@ -60,20 +60,20 @@ contract Coupon is ERC721 {
     }
 
     function dist(uint256 userProvidedSeed) public {
-        require(
-            distCount < ticketNumber - 1,
-            "Can't call dist function anymore !!"
-        );
-        require(ticketNumber > 1, "Minimum two ticket buy is needed !!");
-        require(
-            block.timestamp > getNextDistTimestamp(),
-            "Distribution is not started yet !!"
-        );        
+        // require(
+        //     distCount < ticketNumber - 1,
+        //     "Can't call dist function anymore !!"
+        // );
+        // require(ticketNumber > 1, "Minimum two ticket buy is needed !!");
+        // require(
+        //     block.timestamp > getNextDistTimestamp(),
+        //     "Distribution is not started yet !!"
+        // );        
 
-        fulfillDist(userProvidedSeed);
-        distCount++;
+        // fulfillDist(userProvidedSeed);
+        // distCount++;
 
-        setNextDistTime();
+        // setNextDistTime();
         
         ticketBuyToken.transfer(
             msg.sender,
@@ -81,47 +81,47 @@ contract Coupon is ERC721 {
         );
     }
 
-    function fulfillDist(uint256 userProvidedSeed) internal {
-        uint256 randomness = block.timestamp + userProvidedSeed;
-        uint256 i = ticketNumber;
+    // function fulfillDist(uint256 userProvidedSeed) internal {
+    //     uint256 randomness = block.timestamp + userProvidedSeed;
+    //     uint256 i = ticketNumber;
 
-        do {
-            i--;
-        } while (alreadyDistResult[(randomness % i) + 1] && i > 1);
+    //     do {
+    //         i--;
+    //     } while (alreadyDistResult[(randomness % i) + 1] && i > 1);
 
-        uint256 result = (randomness % i) + 1;
+    //     uint256 result = (randomness % i) + 1;
 
-        if (i == 0 || alreadyDistResult[result]) {
-            do {
-                result = result + 1;
-            } while (alreadyDistResult[result] && result < ticketNumber);
-        }
+    //     if (i == 0 || alreadyDistResult[result]) {
+    //         do {
+    //             result = result + 1;
+    //         } while (alreadyDistResult[result] && result < ticketNumber);
+    //     }
 
-        if (i > ticketNumber || alreadyDistResult[result]) {
-            do {
-                result = result - 1;
-            } while (alreadyDistResult[result] && result > 1);
-        }
+    //     if (i > ticketNumber || alreadyDistResult[result]) {
+    //         do {
+    //             result = result - 1;
+    //         } while (alreadyDistResult[result] && result > 1);
+    //     }
 
-        distResult[distCount] = result;
-        alreadyDistResult[result] = true;
-    }
+    //     distResult[distCount] = result;
+    //     alreadyDistResult[result] = true;
+    // }
 
     function claimPrize(uint256 _ticketNumber) public {
-        require(
-            distCount == ticketNumber - 1,
-            "Can't claim prize before all dist !!"
-        );
+        // require(
+        //     distCount == ticketNumber - 1,
+        //     "Can't claim prize before all dist !!"
+        // );
         require(
             _isApprovedOrOwner(_msgSender(), _ticketNumber),
             "ERC721: transfer caller is not owner nor approved"
         );
-        require(
-            !alreadyDistResult[_ticketNumber] &&
-                _ticketNumber <= ticketNumber &&
-                _ticketNumber > 0,
-            "You are not an winner !!"
-        );
+        // require(
+        //     !alreadyDistResult[_ticketNumber] &&
+        //         _ticketNumber <= ticketNumber &&
+        //         _ticketNumber > 0,
+        //     "You are not an winner !!"
+        // );
 
         transferFrom(msg.sender, address(this), _ticketNumber);
         _burn(_ticketNumber);

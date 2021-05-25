@@ -9,9 +9,9 @@ contract CouponFactory {
         string couponTokenSymbol;
         address ticketBuyToken;
         uint256 ticketPrice;
-        uint256 distInterval;
-        uint256 couponStartTimestamp;
-        uint256 ticketBuyDuration;
+        // uint256 distInterval;
+        // uint256 couponStartTimestamp;
+        // uint256 ticketBuyDuration;
         string baseTokenURI;
     }
 
@@ -25,9 +25,9 @@ contract CouponFactory {
         string couponTokenSymbol,
         address ticketBuyToken,
         uint256 ticketPrice,
-        uint256 distInterval,
-        uint256 couponStartTimestamp,
-        uint256 ticketBuyDuration,
+        // uint256 distInterval,
+        // uint256 couponStartTimestamp,
+        // uint256 ticketBuyDuration,
         string baseTokenURI
     );
 
@@ -36,8 +36,8 @@ contract CouponFactory {
         string memory _symbol,
         address _ticketBuyToken,
         uint256 _ticketBuyPrice,
-        uint256 _distInterval,
-        uint256 _ticketBuyDuration,
+        // uint256 _distInterval,
+        // uint256 _ticketBuyDuration,
         string memory _baseTokenURI
     ) public {
         Coupon newCoupon = new Coupon(
@@ -45,8 +45,8 @@ contract CouponFactory {
             _symbol,
             _ticketBuyToken,
             _ticketBuyPrice,
-            _distInterval,
-            _ticketBuyDuration,
+            // _distInterval,
+            // _ticketBuyDuration,
             _baseTokenURI
         );
 
@@ -61,9 +61,9 @@ contract CouponFactory {
                 _symbol,
                 _ticketBuyToken,
                 _ticketBuyPrice,
-                _distInterval,
-                block.timestamp,
-                _ticketBuyDuration,
+                // _distInterval,
+                // block.timestamp,
+                // _ticketBuyDuration,
                 _baseTokenURI
             )
         );
@@ -75,9 +75,9 @@ contract CouponFactory {
             _symbol,
             _ticketBuyToken,
             _ticketBuyPrice,
-            _distInterval,
-            block.timestamp,
-            _ticketBuyDuration,
+            // _distInterval,
+            // block.timestamp,
+            // _ticketBuyDuration,
             _baseTokenURI
         );
     }
