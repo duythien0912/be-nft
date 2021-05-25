@@ -6,7 +6,6 @@ export async function getBnbPrice() {
   let price = "";
   try {
     const response = await axios.get(BNB_USDT);
-    console.log(response);
     if (
       response != null &&
       response.status === 200 &&

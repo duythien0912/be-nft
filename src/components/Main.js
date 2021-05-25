@@ -25,6 +25,7 @@ export default function Main() {
   const bnb = "0x2B8fF854c5e16cF35B9A792390Cc3a2a60Ec9ba2";
   const [bodyTabKey, setTabKey] = useState("music");
   const [listCoupons, setCoupons] = useState([]);
+  const [allNft, setAllNft] = useState({});
   const [loading, setLoading] = useState(true);
   const [noMetamask, setNoMetamask] = useState(false);
 
@@ -39,8 +40,9 @@ export default function Main() {
       chunks.push(coupons);
     }
 
+    console.log("[chunks] :", chunks);
+
     setCoupons(chunks);
-    setLoading(false);
   };
 
   const getCoupons = async () => {
@@ -50,6 +52,7 @@ export default function Main() {
       return;
     }
     const allCoupons = [];
+    const allCouponsMap = {};
     const couponCount = await window.couponFactory.methods
       .totalCoupons()
       .call();
@@ -64,11 +67,26 @@ export default function Main() {
         .call();
 
       allCoupons.push(distCoupon);
+      if (
+        distCoupon.couponTokenName &&
+        distCoupon.couponTokenName.includes("|")
+      ) {
+        distCoupon.type = distCoupon.couponTokenName.split("|")[0];
+        distCoupon.name = distCoupon.couponTokenName.split("|")[1];
+      }
+      allCouponsMap[distCoupon.couponAddress] = distCoupon;
 
       if (i === 0) {
         createSubArray(allCoupons);
       }
     }
+
+    console.log("allCoupons", allCoupons);
+    console.log("allCouponsMap", allCouponsMap);
+    console.log("couponCount", couponCount);
+    setAllNft(allCouponsMap);
+    console.log("allNft:  =>", allNft);
+    setLoading(false);
   };
 
   const isMetamaskInstalled = () => {
@@ -95,17 +113,17 @@ export default function Main() {
             coupon.ticketBuyToken === bnb ? "BNB" : "USDC"
           }`}
         > */}
-          <Card.Header style={{ marginBottom: "5px" }}>
-            <Image src={coupon.baseTokenURI} width="50px"></Image>
-            <span> {coupon.couponTokenName} Coupon</span>
-          </Card.Header>
+        <Card.Header style={{ marginBottom: "5px" }}>
+          <Image src={coupon.baseTokenURI} width="50px"></Image>
+          <span> {coupon.couponTokenName} Coupon</span>
+        </Card.Header>
 
-          <Card.Body>
-            <div style={{ marginBottom: "10px" }}>
-              Price: {coupon.ticketPrice}
-              <span> {coupon.ticketBuyToken === bnb ? "BNB" : "USDC"}</span>
-            </div>
-          </Card.Body>
+        <Card.Body>
+          <div style={{ marginBottom: "10px" }}>
+            Price: {coupon.ticketPrice}
+            <span> {coupon.ticketBuyToken === bnb ? "BNB" : "USDC"}</span>
+          </div>
+        </Card.Body>
         {/* </Link> */}
       </Card>
     );
@@ -117,7 +135,7 @@ export default function Main() {
 
   return (
     <div className="mb-5 pb-5">
-      {!noMetamask ? (
+      {/* {!noMetamask ? (
         listCoupons.map((element, key) =>
           element.length === 4 ? (
             <CardDeck key={key} style={{ margin: "2%" }}>
@@ -147,22 +165,28 @@ export default function Main() {
         >
           You don't have metamask. Please install first !!
         </div>
-      )}
+      )} */}
       <Container className="mb-4">
         <Col>
-          <Row className="ml-2 ">
-            <h2 className="font-weight-bold display-6">Flow</h2>
+          <Row className="ml-2 mt-5 mb-2">
+            <h2 className="font-weight-bold display-6">Highlights NFT</h2>
           </Row>
           <Row>
-            <Col xs>
-              <FlowBlock />
-            </Col>
-            <Col xs>
-              <FlowBlock />
-            </Col>
-            <Col xs>
-              <FlowBlock />
-            </Col>
+            {Object.keys(allNft || {}).map(function (key, i) {
+              if (i < 3) {
+                return (
+                  <Col xs>
+                    <FlowBlock
+                      imgSrc={allNft[key].baseTokenURI}
+                      title={allNft[key].type}
+                      subTitle={allNft[key].name}
+                      caption={allNft[key].couponTokenSymbol}
+                    />
+                  </Col>
+                );
+              }
+              return <></>;
+            })}
           </Row>
         </Col>
       </Container>
@@ -209,16 +233,16 @@ export default function Main() {
           </Row>
           {bodyTabKey && bodyTabKey === "music" && (
             <>
-              <PlayListBlock />
-              <MusicTable />
+              <PlayListBlock allNft={allNft} />
+              <MusicTable allNft={allNft} />
             </>
           )}
           {bodyTabKey && bodyTabKey === "image" && (
             <>
-              <ImageBlock />
+              <ImageBlock allNft={allNft} />
             </>
           )}
-          {bodyTabKey && bodyTabKey === "video" && <VideoBlock />}
+          {bodyTabKey && bodyTabKey === "video" && <VideoBlock allNft={allNft} />}
         </Col>
       </Container>
     </div>

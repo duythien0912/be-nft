@@ -115,6 +115,7 @@ export default function CreateNft() {
         setProcessing(true);
       })
       .on("receipt", (_) => {
+        console.log('receipt: ',_)
         setProcessing(false);
         setSuccessModal({
           open: true,
@@ -234,7 +235,7 @@ export default function CreateNft() {
                     onChange={(e) =>
                       setAddCouponState({
                         ...addCouponState,
-                        couponTokenName: e.target.value,
+                        couponDescription: e.target.value,
                       })
                     }
                     style={{ width: "80%" }}
@@ -378,7 +379,7 @@ export default function CreateNft() {
                 </Col>
               </Row>
 
-              {addCouponState.couponType !== "image" ||
+              {addCouponState.couponType !== "image" &&
                 (addCouponState.couponType !== "playlist" && (
                   <>
                     <Row className="mt-4">

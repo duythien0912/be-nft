@@ -77,15 +77,22 @@ export default function Header() {
           collapseOnSelect
           variant="dark"
         >
-          <Navbar.Brand href="#">
-            {/* <img
+          <Navbar.Brand href="#" className="align-items-end">
+            <img
               alt=""
-              src="/logo192.png"
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-            /> */}
-            BE COIN
+              src="/logo-removebg2.png"
+              width="42"
+              height="42"
+              className="d-inline-block align-top mr-1"
+            />
+            <img
+              alt=""
+              src="/logo-removebg.png"
+              width="42"
+              height="42"
+              className="d-inline-block align-top mr-1"
+            />
+            {/* <span className="font-weight-bold" style={{fontSize: 16}}>beCOIN</span> */}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Nav className="mr-auto">
@@ -169,7 +176,7 @@ export default function Header() {
         </SuccessModal>
       </div>
 
-      <Container className="bnb-price mt-2 pr-3">
+      <Container className="bnb-price mt-4 pr-3">
         <Row>
           <Col></Col>
           <div className="mr-4 pr-2">

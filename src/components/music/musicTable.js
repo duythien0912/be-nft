@@ -1,8 +1,7 @@
-import { Col, Image, Row, Table } from "react-bootstrap";
+import { Col, Image, Row, Table, Button } from "react-bootstrap";
 
-export default function MusicTable() {
-  const imgSrc = "/cover.jpeg";
-
+export default function MusicTable({ allNft }) {
+  var i = 1;
   return (
     <>
       <Table
@@ -20,27 +19,47 @@ export default function MusicTable() {
             <th className="caption">ARTIST</th>
             <th className="caption">ALBUM</th>
             <th className="caption time-col">TIME</th>
-            {/* <th className="caption"></th> */}
+            <th className="caption"></th>
           </tr>
         </thead>
         <tbody>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map((item) => (
-            <tr>
-              <td className="number-col caption">{item}</td>
-              <td className="logo-col">
-                <Image
-                  className="music-icon mr-2 fadein"
-                  src={imgSrc}
-                  rounded
-                  fluid
-                />
-              </td>
-              <td>Bicycle Race</td>
-              <td>Queen</td>
-              <td className="caption">The Dark Side of the Moon</td>
-              <td className="caption time-col">6:22</td>
-            </tr>
-          ))}
+          {Object.keys(allNft || {}).map(function (key, _) {
+            if (allNft[key].type === "music")
+              return (
+                <tr key={key}>
+                  <td className="number-col caption">{i++}</td>
+                  <td className="logo-col">
+                    <Image
+                      className="music-icon mr-2 fadein"
+                      src={allNft[key].baseTokenURI}
+                      rounded
+                      fluid
+                    />
+                  </td>
+                  <td>{allNft[key].name}</td>
+                  <td>v.a</td>
+                  <td className="caption">{allNft[key].couponTokenSymbol}</td>
+                  <td className="caption time-col">
+                    {Math.floor(Math.random() * 4) + 1}:
+                    {Math.floor(Math.random() * 60) + 1}
+                  </td>
+                  {/* <Button className="normal-btn">Play</Button> */}
+                  <td className="text-center">
+                    <button
+                      className="play-block-btn"
+                      type="button"
+                      aria-pressed="false"
+                      aria-label="play"
+                    >
+                      <span className="ml-1">&#x25b6;</span>
+
+                      {/* <span className="ml-1">&#43;</span> */}
+                    </button>
+                  </td>
+                </tr>
+              );
+            return <></>;
+          })}
         </tbody>
       </Table>
     </>

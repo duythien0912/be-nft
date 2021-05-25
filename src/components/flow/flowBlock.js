@@ -1,7 +1,11 @@
 import { Col, Image, Row } from "react-bootstrap";
 
-export default function FlowBlock() {
-  const imgSrc = "/cover.jpeg";
+export default function FlowBlock({
+  imgSrc = "/cover.jpeg",
+  title = "Flow",
+  subTitle = "Your Personal Soundtrack",
+  caption = "Based on your listening history",
+}) {
   return (
     <div className="fadein flow-block">
       <Image className="img-bg-flow-block" src={imgSrc} rounded fluid></Image>
@@ -14,6 +18,8 @@ export default function FlowBlock() {
               className="flow-main-image"
               src={imgSrc}
               rounded
+              height={160}
+              width={160}
               fluid
             ></Image>
             <button
@@ -23,20 +29,18 @@ export default function FlowBlock() {
               aria-label="play"
             >
               <span className="ml-1">&#x25b6;</span>
-              
-              {/* <span className="ml-1">&#43;</span> */}
             </button>
           </Col>
           <Col className="align-self-center flow-title-block" xs>
             <Row className="justify-content-center">
-              <h6 className="flow-body-text mt-2">Flow</h6>
+              <h6 className="flow-body-text mt-2">{title}</h6>
             </Row>
             <Row className="justify-content-center">
-              <p>Your Personal Soundtrack</p>
+              <p>{subTitle}</p>
             </Row>
-            <Row className="mt-4"></Row>
+            <Row className="mt-0"></Row>
             <Row className="justify-content-center">
-              <p className="caption">Based on your listening history</p>
+              <p className="caption">{caption}</p>
             </Row>
           </Col>
         </Row>

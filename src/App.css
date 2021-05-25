@@ -299,9 +299,15 @@
 
 .cover-block-btn{
   position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 80px;
+
+  /* position: absolute;
   bottom: -30%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
   width: 50px;
   height: 50px;
   border: none;
@@ -312,7 +318,19 @@
   line-height: 30px;
 }
 
+.play-block-btn{
+  width: 50px;
+  height: 50px;
+  border: none;
+  background: rgb(0 0 0 / 0%);
+  border-radius: 50%;
+  color: #ffffff98;
+  font-size: 30px;
+  line-height: 30px;
+}
+
 .flow-body-text{
+  text-transform: capitalize;
   font-size: 40px;
   color: #ffffff98;
 }
@@ -330,6 +348,11 @@
 
 .display-6{
   font-size: 2rem;
+  line-height: 1.2;
+}
+
+.display-7{
+  font-size: 1.5rem;
   line-height: 1.2;
 }
 
@@ -529,4 +552,10 @@ vertical-align: middle;
 
 .gray-text{
   color: #99999F;
+}
+
+.one-line{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
