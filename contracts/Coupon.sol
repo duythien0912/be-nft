@@ -7,31 +7,37 @@ contract Coupon is ERC721 {
     IBEP20 public ticketBuyToken;
     uint256 public ticketPrice;
     uint256 public ticketNumber;
-    // uint256 public distInterval;
+    string public description;
+    string public dataURI;
+    // uint256 pub_lic distInterval;
     // uint256 public distCount;
     // uint256 public couponStartTime;
     // uint256 public ticketBuyEndTime;
     // uint256 internal nextDistTimestamp;
-    // address internal couponWinner;
+    address internal couponWinner;
 
     event NewBuy(address buyer, uint256 ticketNumber);
 
-    // mapping(uint256 => uint256) internal distResult;
-    // mapping(uint256 => bool) internal alreadyDistResult;
+    mapping(uint256 => uint256) internal distResult;
+    mapping(uint256 => bool) internal alreadyDistResult;
 
     constructor(
         string memory _name,
         string memory _symbol,
+        string memory _description,
         address _ticketBuyToken,
         uint256 _ticketBuyPrice,
         // uint256 _distInterval,
         // uint256 _ticketBuyDuration,
-        string memory _tokenURI
+        string memory _tokenURI,
+        string memory _dataURI
     )
     
     public ERC721(_name, _symbol) {
         ticketBuyToken = IBEP20(_ticketBuyToken);
         ticketPrice = _ticketBuyPrice;
+        description = _description;
+        dataURI = _dataURI;
         // distInterval = _distInterval;
         // couponStartTime = block.timestamp;
         // ticketBuyEndTime = couponStartTime + (_ticketBuyDuration * 1 minutes);
@@ -40,10 +46,10 @@ contract Coupon is ERC721 {
     }
 
     function buyTicket() public {
-        require(
-            block.timestamp <= ticketBuyEndTime,
-            "You can't participate after participation deadline !!"
-        );
+        // require(
+        //     block.timestamp <= ticketBuyEndTime,
+        //     "You can't participate after participation deadline !!"
+        // );
 
         require(
             ticketBuyToken.transferFrom(
@@ -125,7 +131,7 @@ contract Coupon is ERC721 {
 
         transferFrom(msg.sender, address(this), _ticketNumber);
         _burn(_ticketNumber);
-        couponWinner = msg.sender;
+        // couponWinner = msg.sender;
 
         require(
             ticketBuyToken.transfer(
@@ -150,10 +156,10 @@ contract Coupon is ERC721 {
     }
 
     function getFinalResult() public view returns (uint256) {
-        require(
-            distCount == ticketNumber - 1,
-            "Can't get result before all dist !!"
-        );
+        // require(
+        //     distCount == ticketNumber - 1,
+        //     "Can't get result before all dist !!"
+        // );
 
         uint256 result;
 
@@ -167,37 +173,37 @@ contract Coupon is ERC721 {
     }
 
     function getCouponWinner() public view returns (address) {
-        require(
-            distCount == ticketNumber - 1,
-            "Can't get winner before all distribute !!"
-        );
+        // require(
+        //     distCount == ticketNumber - 1,
+        //     "Can't get winner before all distribute !!"
+        // );
 
         return couponWinner;
     }
 
     function getNextDistTimestamp() public view returns (uint256) {
-        uint256 result = nextDistTimestamp;
+        // uint256 result = nextDistTimestamp;
 
-        if (ticketNumber > 1 && distCount == 0) {
-            result =
-                ticketBuyEndTime +
-                ((distCount + 1) * distInterval * 1 minutes);
-        }
+        // if (ticketNumber > 1 && distCount == 0) {
+        //     result =
+        //         ticketBuyEndTime +
+        //         ((distCount + 1) * distInterval * 1 minutes);
+        // }
 
-        return result;
+        // return result;
     }
 
     function setNextDistTime() internal {
-        if (distCount >= ticketNumber - 1) {
-            nextDistTimestamp = 0;
-        } else if (distCount > 0) {
-            nextDistTimestamp = block.timestamp + (distInterval * 1 minutes);
-        }
+        // if (distCount >= ticketNumber - 1) {
+        //     nextDistTimestamp = 0;
+        // } else if (distCount > 0) {
+        //     nextDistTimestamp = block.timestamp + (distInterval * 1 minutes);
+        // }
     }
 
     function claimReturn() public {
         require(ticketNumber == 1, "There are more than 1 tickets !!");
-        require(block.timestamp > ticketBuyEndTime, "Buy period isn't over");
+        // require(block.timestamp > ticketBuyEndTime, "Buy period isn't over");
         require(
             _isApprovedOrOwner(_msgSender(), 1),
             "ERC721: transfer caller is not owner nor approved"

@@ -88,13 +88,13 @@ export default function Main() {
   function DisplayCard({ coupon, count }) {
     return (
       <Card key={count} className="display-coupon-card">
-        <Link
+        {/* <Link
           key={count}
-          style={{ textDecoration: "none", color: "black" }}
+          style={{ textDecoration: "none" }}
           to={`/view/${coupon.couponAddress}/${coupon.couponTokenSymbol}/${
             coupon.ticketBuyToken === bnb ? "BNB" : "USDC"
           }`}
-        >
+        > */}
           <Card.Header style={{ marginBottom: "5px" }}>
             <Image src={coupon.baseTokenURI} width="50px"></Image>
             <span> {coupon.couponTokenName} Coupon</span>
@@ -102,31 +102,11 @@ export default function Main() {
 
           <Card.Body>
             <div style={{ marginBottom: "10px" }}>
-              Ticket Price: {coupon.ticketPrice}
+              Price: {coupon.ticketPrice}
               <span> {coupon.ticketBuyToken === bnb ? "BNB" : "USDC"}</span>
             </div>
-            <div style={{ marginBottom: "10px" }}>
-              Dist Interval: Every {coupon.distInterval} minutes
-            </div>
-            <div style={{ marginBottom: "5px" }}>
-              {time.currentUnixTime() <
-              Number(coupon.couponStartTimestamp) +
-                Number(coupon.ticketBuyDuration) * 60 ? (
-                <div>
-                  <span>Close In: </span>
-                  <span className="info-message">
-                    {time.getRemainingTime(
-                      Number(coupon.couponStartTimestamp) +
-                        Number(coupon.ticketBuyDuration) * 60
-                    )}
-                  </span>
-                </div>
-              ) : (
-                <span className="warning-message">Sold out</span>
-              )}
-            </div>
           </Card.Body>
-        </Link>
+        {/* </Link> */}
       </Card>
     );
   }

@@ -1,48 +1,5 @@
 [
 	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_name",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_symbol",
-				"type": "string"
-			},
-			{
-				"internalType": "address",
-				"name": "_ticketBuyToken",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_ticketBuyPrice",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_distInterval",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_ticketBuyDuration",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "_baseTokenURI",
-				"type": "string"
-			}
-		],
-		"name": "addCoupon",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -56,6 +13,12 @@
 				"internalType": "address",
 				"name": "distCouponAddress",
 				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "description",
+				"type": "string"
 			},
 			{
 				"indexed": false,
@@ -83,31 +46,62 @@
 			},
 			{
 				"indexed": false,
-				"internalType": "uint256",
-				"name": "distInterval",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "couponStartTimestamp",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "ticketBuyDuration",
-				"type": "uint256"
+				"internalType": "string",
+				"name": "baseTokenURI",
+				"type": "string"
 			},
 			{
 				"indexed": false,
 				"internalType": "string",
-				"name": "baseTokenURI",
+				"name": "dataURI",
 				"type": "string"
 			}
 		],
 		"name": "NewCoupon",
 		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_symbol",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_description",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_ticketBuyToken",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_ticketBuyPrice",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_baseTokenURI",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_dataURI",
+				"type": "string"
+			}
+		],
+		"name": "addCoupon",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
 		"inputs": [
@@ -135,6 +129,11 @@
 				"type": "string"
 			},
 			{
+				"internalType": "string",
+				"name": "description",
+				"type": "string"
+			},
+			{
 				"internalType": "address",
 				"name": "ticketBuyToken",
 				"type": "address"
@@ -145,23 +144,13 @@
 				"type": "uint256"
 			},
 			{
-				"internalType": "uint256",
-				"name": "distInterval",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "couponStartTimestamp",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "ticketBuyDuration",
-				"type": "uint256"
+				"internalType": "string",
+				"name": "baseTokenURI",
+				"type": "string"
 			},
 			{
 				"internalType": "string",
-				"name": "baseTokenURI",
+				"name": "dataURI",
 				"type": "string"
 			}
 		],

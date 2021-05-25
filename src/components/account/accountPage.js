@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import ImageBlock from "../image/imageBlock";
 import MusicTable from "../music/musicTable";
 import VideoBlock from "../video/videoBlock";
+import CreateNft from "../CreateNft";
 
 import "./accountPage.css";
 
@@ -97,7 +98,11 @@ export default function AccountPage() {
           </div>
         )}
         {bodyTabKey && bodyTabKey === "mintNFT" && (
-          <div className="fadein">MINT NFTS</div>
+          <>
+            <div className="fadein mb-5 pb-5">
+              <CreateNft />
+            </div>
+          </>
         )}
         {bodyTabKey && bodyTabKey === "configAccount" && (
           <div className="fadein">
