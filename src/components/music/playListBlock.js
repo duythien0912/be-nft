@@ -44,7 +44,7 @@ export default function PlayListBlock({ allNft }) {
               </Col>
             </Row>
           );
-        return <></>;
+        return null;
       })}
     </div>
   );

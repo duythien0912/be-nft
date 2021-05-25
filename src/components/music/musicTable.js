@@ -66,7 +66,7 @@ export default function MusicTable({ allNft }) {
                   </td>
                 </tr>
               );
-            return <></>;
+            return null;
           })}
         </tbody>
       </Table>

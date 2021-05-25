@@ -22,7 +22,7 @@ export default function VideoBlock({ allNft }) {
               </Col>
             );
           }
-          return <></>;
+          return null;
         })}
       </Row>
     </Col>

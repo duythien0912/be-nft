@@ -28,7 +28,7 @@ export default function ImageBlock({ allNft }) {
                 </div>
               </Col>
             );
-          return <></>;
+          return null;
         })}
       </Row>
     </Col>

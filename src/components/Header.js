@@ -122,7 +122,6 @@ export default function Header() {
               </InputGroup.Prepend>
 
               <FormControl
-                icon
                 type="text"
                 placeholder="Search..."
                 className="header-search mr-sm-2"

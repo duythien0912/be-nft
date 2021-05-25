@@ -172,21 +172,21 @@ export default function Main() {
             <h2 className="font-weight-bold display-6">Highlights NFT</h2>
           </Row>
           <Row>
-            {Object.keys(allNft || {}).map(function (key, i) {
+            {Object.keys(allNft || {}).map(function (_key, i) {
               if (i < 3) {
                 return (
-                  <Col xs>
+                  <Col xs key={_key}>
                     <FlowBlock
-                      imgSrc={allNft[key].baseTokenURI}
-                      title={allNft[key].type}
-                      subTitle={allNft[key].name}
-                      caption={allNft[key].couponTokenSymbol}
-                      href={allNft[key].dataURI || ""}
+                      imgSrc={allNft[_key].baseTokenURI}
+                      title={allNft[_key].type}
+                      subTitle={allNft[_key].name}
+                      caption={allNft[_key].couponTokenSymbol}
+                      href={allNft[_key].dataURI || ""}
                     />
                   </Col>
                 );
               }
-              return <></>;
+              return null;
             })}
           </Row>
         </Col>
