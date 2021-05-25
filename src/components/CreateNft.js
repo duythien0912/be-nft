@@ -119,7 +119,7 @@ export default function CreateNft() {
         setProcessing(false);
         setSuccessModal({
           open: true,
-          msg: "Nft successfully created !!",
+          msg: `Nft successfully created with hash !!\nhttps://testnet.bscscan.com/tx/${_.transactionHash}`,
         });
       })
       .catch((error) => {
