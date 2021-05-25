@@ -73,10 +73,12 @@ export default function MarketPage() {
         </Row>
         <Row className="mb-4 pb-2">
           <Col className="text-right">
-            <Button className="text-center music-btn">ISSUE NEW NFT</Button>
+            <a href="#account" className="text-center music-btn" style={{width: 238}}>
+              ISSUE NEW NFT
+            </a>
           </Col>
           <Col className="text-left">
-            <Button className="text-center normal-btn">
+            <Button className="text-center normal-btn" style={{width: 238}}>
               TUTORIAL MINT NFT
             </Button>
           </Col>

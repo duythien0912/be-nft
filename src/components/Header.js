@@ -59,7 +59,7 @@ export default function Header() {
 
   useEffect(() => {
     async function _fetchData() {
-      // await initContract();
+      await initContract();
       setUserAddress(window?.userAddress);
       setBnbPrice(await getBnbPrice());
       setInterval(async () => {
