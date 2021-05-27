@@ -3,6 +3,7 @@ import ipfsClient from "ipfs-http-client";
 import AlertModal from "./AlertModal";
 import SuccessModal from "./SuccessModal";
 import history from "./history";
+import Loading from "./Loading";
 import {
   Row,
   Col,
@@ -16,6 +17,7 @@ import {
 } from "react-bootstrap";
 
 export default function CreateNft() {
+  const [loading, setLoading] = useState(true);
   const [deploying, setDeploying] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [addCouponState, setAddCouponState] = useState({
@@ -181,10 +183,13 @@ export default function CreateNft() {
         typeof window.ethereum === "undefined" ||
         !window.ethereum.selectedAddress
       ) {
+        setLoading(false);
         setShowMetamaskError(true);
       }
     });
   }, []);
+
+  if (loading) return <Loading paddingTop={40} />;
 
   return (
     <div style={{ marginTop: "5%" }}>

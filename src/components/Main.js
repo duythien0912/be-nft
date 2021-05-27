@@ -94,10 +94,11 @@ export default function Main() {
   };
 
   useEffect(() => {
-    if (!isMetamaskInstalled()) {
-      setLoading(false);
-      setNoMetamask(true);
-    } else if (Object.values(allNft || {}).length === 0) {
+    // if (!isMetamaskInstalled()) {
+    //   setLoading(false);
+    //   setNoMetamask(true);
+    // } else 
+    if (Object.values(allNft || {}).length === 0) {
       getCoupons();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

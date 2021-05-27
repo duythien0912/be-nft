@@ -226,6 +226,10 @@
   color: rgb(10, 131, 103)
 }
 
+.g-pt-40 {
+  padding-top: 6rem !important;
+}
+
 .auction-alert-message {
   color: orangered;
   font-weight: bold;

@@ -2,11 +2,11 @@ import React from "react";
 
 import ReactLoading from "react-loading";
 
-export default function Loading() {
+export default function Loading({ paddingTop = 90 }) {
   return (
     <div
-      className="d-flex justify-content-center mt-5 g-pt-90"
-      style={{ height: "-webkit-fill-available"}}
+      className={`d-flex justify-content-center mt-5 g-pt-${paddingTop}`}
+      style={{ height: "-webkit-fill-available" }}
     >
       <ReactLoading
         type={"spin"}
