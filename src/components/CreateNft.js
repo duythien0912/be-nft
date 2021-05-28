@@ -4,6 +4,9 @@ import AlertModal from "./AlertModal";
 import SuccessModal from "./SuccessModal";
 import history from "./history";
 import Loading from "./Loading";
+
+import useWeb3Store from "../stores/useWeb3Store";
+
 import {
   Row,
   Col,
@@ -17,9 +20,12 @@ import {
 } from "react-bootstrap";
 
 export default function CreateNft() {
+  const { userAddress, beUserContract, initMetaMask } = useWeb3Store();
+
   const [loading, setLoading] = useState(true);
   const [deploying, setDeploying] = useState(false);
   const [processing, setProcessing] = useState(false);
+
   const [addCouponState, setAddCouponState] = useState({
     couponTokenName: "",
     couponType: "music",
@@ -100,7 +106,7 @@ export default function CreateNft() {
 
     console.log(addCouponState);
 
-    window.couponFactory.methods
+    beUserContract.methods
       .addCoupon(
         `${addCouponState.couponType}|${addCouponState.couponTokenName}`,
         addCouponState.couponDescription,
@@ -136,7 +142,7 @@ export default function CreateNft() {
 
   const deployImage = () => {
     return new Promise((resolve) => {
-      const reader = new window.FileReader();
+      const reader = new FileReader();
       reader.readAsArrayBuffer(addCouponState.image);
 
       reader.onloadend = async () => {
@@ -156,7 +162,7 @@ export default function CreateNft() {
 
   const deployDataFile = () => {
     return new Promise((resolve) => {
-      const reader = new window.FileReader();
+      const reader = new FileReader();
       reader.readAsArrayBuffer(addCouponState.data);
 
       reader.onloadend = async () => {
@@ -178,18 +184,30 @@ export default function CreateNft() {
   }
 
   useEffect(() => {
-    sleep(1000).then((_) => {
-      if (
-        typeof window.ethereum === "undefined" ||
-        !window.ethereum.selectedAddress
-      ) {
-        setLoading(false);
-        setShowMetamaskError(true);
-      }
+    sleep(1000).then(async (_) => {
+      setLoading(false);
     });
   }, []);
 
   if (loading) return <Loading paddingTop={40} />;
+
+  if (!userAddress || !beUserContract)
+    return (
+      <>
+        <p
+          style={{
+            letterSpacing: "0.1rem",
+          }}
+          className="display-6 font-weight-bold pt-5 mt-5 mb-4"
+        >
+          PLEASE CONNECT YOUR WALLET
+          <br />& SELECT THE BSC TESTNET.
+        </p>
+        <Button className="login-btn" onClick={initMetaMask}>
+          Connect Metamask
+        </Button>
+      </>
+    );
 
   return (
     <div style={{ marginTop: "5%" }}>
@@ -202,7 +220,7 @@ export default function CreateNft() {
           }}
         >
           <div>
-            {typeof window.ethereum === "undefined" ? (
+            {typeof ethereum === "undefined" ? (
               <div>You should install Metamask first.</div>
             ) : (
               <div>Please connect to Metamask.</div>

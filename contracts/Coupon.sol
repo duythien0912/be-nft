@@ -9,11 +9,6 @@ contract Coupon is ERC721 {
     uint256 public ticketNumber;
     string public description;
     string public dataURI;
-    // uint256 pub_lic distInterval;
-    // uint256 public distCount;
-    // uint256 public couponStartTime;
-    // uint256 public ticketBuyEndTime;
-    // uint256 internal nextDistTimestamp;
     address internal couponWinner;
 
     event NewBuy(address buyer, uint256 ticketNumber);
@@ -27,8 +22,6 @@ contract Coupon is ERC721 {
         string memory _description,
         address _ticketBuyToken,
         uint256 _ticketBuyPrice,
-        // uint256 _distInterval,
-        // uint256 _ticketBuyDuration,
         string memory _tokenURI,
         string memory _dataURI
     )
@@ -38,18 +31,11 @@ contract Coupon is ERC721 {
         ticketPrice = _ticketBuyPrice;
         description = _description;
         dataURI = _dataURI;
-        // distInterval = _distInterval;
-        // couponStartTime = block.timestamp;
-        // ticketBuyEndTime = couponStartTime + (_ticketBuyDuration * 1 minutes);
 
         _setBaseURI(_tokenURI);
     }
 
     function buyTicket() public {
-        // require(
-        //     block.timestamp <= ticketBuyEndTime,
-        //     "You can't participate after participation deadline !!"
-        // );
 
         require(
             ticketBuyToken.transferFrom(

@@ -10,12 +10,21 @@ export default function PlayListBlock({ allNft }) {
           return (
             <Row key={key} xs={12} className="m-0 mb-5 align-items-center">
               <Col xs={2} className="">
+                <a data-fancybox="gallery" href={allNft[key].baseTokenURI}>
+                  <Image
+                    className="fadein"
+                    src={allNft[key].baseTokenURI}
+                    rounded
+                    fluid
+                  />
+                </a>
+{/* 
                 <Image
                   className="fadein"
                   src={allNft[key].baseTokenURI}
                   rounded
                   fluid
-                />
+                /> */}
               </Col>
               <Col xs={8} className="text-left">
                 <p className="mt-2 mb-0">Playlist</p>

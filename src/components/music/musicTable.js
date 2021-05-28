@@ -30,12 +30,14 @@ export default function MusicTable({ allNft }) {
                 <tr key={key}>
                   <td className="number-col caption">{i++}</td>
                   <td className="logo-col">
-                    <Image
-                      className="music-icon mr-2 fadein"
-                      src={allNft[key].baseTokenURI}
-                      rounded
-                      fluid
-                    />
+                    <a data-fancybox="gallery" href={allNft[key].baseTokenURI}>
+                      <Image
+                        className="music-icon mr-2 fadein"
+                        src={allNft[key].baseTokenURI}
+                        rounded
+                        fluid
+                      />
+                    </a>
                   </td>
                   <td>{allNft[key].name}</td>
                   <td>v.a</td>
@@ -50,9 +52,10 @@ export default function MusicTable({ allNft }) {
                   {/* <Button className="normal-btn">Play</Button> */}
                   <td className="text-center">
                     <a
-                      href={allNft[key].dataURI}
-                      target="_blank"
-                      rel="noreferrer"
+                      data-fancybox
+                      data-type="iframe"
+                      data-src={allNft[key].dataURI}
+                      href="javascript:void(0)"
                       role="button"
                       className="play-block-btn pt-2"
                       type="button"

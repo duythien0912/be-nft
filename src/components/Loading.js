@@ -1,6 +1,7 @@
 import React from "react";
 
 import ReactLoading from "react-loading";
+import { Image } from "react-bootstrap";
 
 export default function Loading({ paddingTop = 90 }) {
   return (
@@ -14,6 +15,7 @@ export default function Loading({ paddingTop = 90 }) {
         height={"6%"}
         width={"6%"}
       />
+      {/* <Image src="/loading.gif" height={"60%"} width={"60%"} /> */}
     </div>
   );
 }

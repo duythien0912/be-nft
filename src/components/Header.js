@@ -13,54 +13,35 @@ import {
 
 import AlertModal from "./AlertModal";
 import SuccessModal from "./SuccessModal";
-import { initContract } from "../web3/init";
 import { getBnbPrice } from "../api/getBnbUsdt";
+import useWeb3Store from "../stores/useWeb3Store";
 
 export default function Header() {
-  const [userAddress, setUserAddress] = useState("");
+  const {
+    userAddress,
+    initMetaMask,
+    isConnectWalletSuccess,
+    closeConnectWalletModel,
+    isShowConnectWalletSuccess,
+  } = useWeb3Store();
+
   const [bnbPrice, setBnbPrice] = useState("");
-  const [successModal, setSuccessModal] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
   const [errorMetamaskInstallModal, setErrorMetamaskInstallModal] = useState(
     false
   );
 
   const handleConnectMetamask = async () => {
-    console.log("window.userAddress", window.userAddress);
-    console.log("window.ethereum", window.ethereum);
-    if (!isMetamaskInstalled() || !isHaveUserAddressAddress()) {
-      await initContract();
-    }
-
-    if (isMetamaskInstalled() && isHaveUserAddressAddress()) {
-      setSuccessModal(true);
-      setUserAddress(window.userAddress);
-    }
-  };
-
-  const isMetamaskInstalled = () => {
-    if (typeof window.ethereum === "undefined") {
-      setErrorMetamaskInstallModal(true);
-    }
-    return typeof window.ethereum !== "undefined";
-  };
-
-  const isHaveUserAddressAddress = () => {
-    if (typeof window.userAddress === "undefined") {
-      //      setErrorModal(true);
-    }
-    return typeof window.userAddress !== "undefined";
+    await initMetaMask();
   };
 
   const isHaveUser =
-    typeof window.userAddress !== "undefined" &&
+    typeof userAddress !== "undefined" &&
     userAddress !== null &&
     userAddress !== "";
 
   useEffect(() => {
     async function _fetchData() {
-      await initContract();
-      setUserAddress(window?.userAddress);
       setBnbPrice(await getBnbPrice());
       setInterval(async () => {
         setBnbPrice(await getBnbPrice());
@@ -68,6 +49,12 @@ export default function Header() {
     }
     _fetchData();
   }, []);
+
+  var _userAddress = userAddress;
+  if (userAddress && userAddress.length >= 8) {
+    _userAddress = userAddress.substring(0, 8) + "...";
+  }
+
   return (
     <>
       <div className="top-navbar-container mb-4">
@@ -85,14 +72,6 @@ export default function Header() {
               height="42"
               className="ml-5 d-inline-block align-top mr-1"
             />
-            {/* <img
-              alt=""
-              src="/logo-removebg2.png"
-              width="42"
-              height="42"
-              className="d-inline-block align-top mr-1"
-            /> */}
-            {/* <span className="font-weight-bold" style={{fontSize: 16}}>beCOIN</span> */}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Nav className="mr-auto">
@@ -106,12 +85,6 @@ export default function Header() {
             <Nav.Link className="menu-btn" href="#nft">
               NFT
             </Nav.Link>
-            {/* <Nav.Link className="menu-btn" href="#create-coupon">
-              Create Coupon
-            </Nav.Link>
-            <Nav.Link className="menu-btn" href="#token-faucet">
-              Faucet
-            </Nav.Link> */}
           </Nav>
           <Nav>
             <InputGroup className="">
@@ -136,9 +109,7 @@ export default function Header() {
               >
                 <Row className="justify-content-center align-items-center">
                   <Image src="/user.svg" className="coin-logo mr-2" />
-                  {userAddress && userAddress.length >= 8
-                    ? userAddress.substring(0, 8) + "..."
-                    : userAddress}
+                  {_userAddress}
                 </Row>
               </Nav.Link>
             ) : (
@@ -167,9 +138,9 @@ export default function Header() {
         </AlertModal>
 
         <SuccessModal
-          open={successModal}
-          toggle={() => setSuccessModal(false)}
-          onConfirm={() => setSuccessModal(false)}
+          open={isShowConnectWalletSuccess}
+          toggle={() => closeConnectWalletModel()}
+          onConfirm={() => closeConnectWalletModel()}
         >
           Connect user Metamask success!
         </SuccessModal>

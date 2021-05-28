@@ -6,14 +6,10 @@ contract CouponFactory {
     struct CouponInfo {
         address couponAddress;
         string couponTokenName;
-//        string nftType;
         string couponTokenSymbol;
         string description;
         address ticketBuyToken;
         uint256 ticketPrice;
-        // uint256 distInterval;
-        // uint256 couponStartTimestamp;
-        // uint256 ticketBuyDuration;
         string baseTokenURI;
         string dataURI;
     }
@@ -24,15 +20,11 @@ contract CouponFactory {
     event NewCoupon(
         uint256 id,
         address distCouponAddress,
-//        string nftType, // have 3 type => Image, Video, Music
         string description,
         string couponTokenName,
         string couponTokenSymbol,
         address ticketBuyToken,
         uint256 ticketPrice,
-        // uint256 distInterval,
-        // uint256 couponStartTimestamp,
-        // uint256 ticketBuyDuration,
         string baseTokenURI,
         string dataURI
     );

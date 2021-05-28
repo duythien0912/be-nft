@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Col, Image, Row } from "react-bootstrap";
 
 export default function FlowBlock({
@@ -7,7 +8,7 @@ export default function FlowBlock({
   subTitle = "Your Personal Soundtrack",
   caption = "Based on your listening history",
 }) {
-  return (
+  var bodyWidget = (
     <div className="fadein flow-block">
       <Image className="img-bg-flow-block" src={imgSrc} rounded fluid></Image>
       <div className="bg-flow-block"></div>
@@ -24,18 +25,18 @@ export default function FlowBlock({
               fluid
             ></Image>
             {href && (
-              <a
-                href={href}
-                target="_blank"
-                rel="noreferrer"
+              <div
+                // href={href}
+                // target="_blank"
+                // rel="noreferrer"
                 className="cover-block-btn"
-                type="button"
-                aria-pressed="false"
-                aria-label="play"
-                role="button"
+                // type="button"
+                // aria-pressed="false"
+                // aria-label="play"
+                // role="button"
               >
                 <span className="ml-1 pt-2">&#x25b6;</span>
-              </a>
+              </div>
             )}
           </Col>
           <Col className="align-self-center flow-title-block" xs>
@@ -54,4 +55,53 @@ export default function FlowBlock({
       </div>
     </div>
   );
+
+  return (
+    <div>
+      <a
+        data-fancybox
+        data-type="iframe"
+        data-src={href}
+        href="javascript:void(0)"
+      >
+        {bodyWidget}
+      </a>
+    </div>
+  );
+
+  // if (title === "image")
+  //   return (
+  //     <div>
+  //       <a href={imgSrc} data-fancybox="gallery">
+  //         {bodyWidget}
+  //       </a>
+  //     </div>
+  //   );
+  // if (title === "video")
+  //   return (
+  //     <div>
+  //       <a
+  //         data-fancybox
+  //         data-type="iframe"
+  //         data-src={href}
+  //         href="javascript:void(0)"
+  //       >
+  //         {bodyWidget}
+  //       </a>
+  //     </div>
+  //   );
+  // if (title === "music")
+  //   return (
+  //     <div>
+  //       <a
+  //         data-fancybox
+  //         data-type="iframe"
+  //         data-src={href}
+  //         href="javascript:void(0)"
+  //       >
+  //         {bodyWidget}
+  //       </a>
+  //     </div>
+  //   );
+  // return bodyWidget;
 }

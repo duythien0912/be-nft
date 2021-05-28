@@ -10,32 +10,33 @@ export default function Faucet() {
 
   const [errorModal, setErrorModal] = useState({
     msg: "",
-    open: false
+    open: false,
   });
   const [successModal, setSuccessModal] = useState({
     msg: "",
-    open: false
+    open: false,
   });
   const [tokens] = useState([
     {
       name: "BNB",
       address: "0x2B8fF854c5e16cF35B9A792390Cc3a2a60Ec9ba2",
-      status: false
-    }, {
+      status: false,
+    },
+    {
       name: "USDC",
       address: "0x65471bdCDb3720Dc07B914756884b50a2b4395fb",
-      status: false
-    }
+      status: false,
+    },
   ]);
 
   const handleGetTestTokens = (tokenAddress) => {
     window.tokenFaucet.methods
       .claimTestTokens(tokenAddress)
       .send()
-      .on('transactionHash', () => {
+      .on("transactionHash", () => {
         setProcessing(true);
       })
-      .on('receipt', (_) => {
+      .on("receipt", (_) => {
         setProcessing(false);
       })
       .catch((error) => {
@@ -45,16 +46,14 @@ export default function Faucet() {
           msg: error.message,
         });
       });
-  }
+  };
 
   const checkIsAlreadyClaimed = () => {
     tokens.forEach(async (token, i) => {
-      console.log('ff', token.address)
-      const status = await window.tokenFaucet
-        .methods.alreadyClaimed(
-          window.userAddress,
-          token.address,
-        ).call();
+      console.log("ff", token.address);
+      const status = await window.tokenFaucet.methods
+        .alreadyClaimed(window.userAddress, token.address)
+        .call();
 
       tokens[i].status = status;
 
@@ -62,21 +61,21 @@ export default function Faucet() {
         setLoading(false);
       }
     });
-  }
+  };
 
   useEffect(() => {
     checkIsAlreadyClaimed();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-if (loading) {
-  return <Loading />
-};
+  if (loading) {
+    return <Loading />;
+  }
 
-return (
-  <div>
-    <CardDeck>
-      <Card className="hidden-card"></Card>
+  return (
+    <div>
+      <CardDeck>
+        <Card className="hidden-card"></Card>
         <Card className="view-pool-card">
           <Card.Header>
             <u>Token Faucet</u>
@@ -85,11 +84,17 @@ return (
           <Card.Body>
             <div style={{ marginBottom: "30px" }}>
               <strong>If you want to get token</strong>
-                <br />Please use <a
-                    target="_blank"                    
-                    href="https://testnet.binance.org/faucet-smart"
-                    style={{ fontWeight: "bold" }}
-                > Faucet </a>                
+              <br />
+              Please use{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://testnet.binance.org/faucet-smart"
+                style={{ fontWeight: "bold" }}
+              >
+                {" "}
+                Faucet{" "}
+              </a>
             </div>
 
             {tokens.map((token, key) => (
@@ -97,71 +102,73 @@ return (
                 key={key}
                 className="mx-auto form-card text-center"
                 style={{
-                    backgroundColor: "rgb(253, 255, 255)",
-                    marginTop: "4%",
-                    marginBottom: "4%"
-                }}>
+                  backgroundColor: "rgb(253, 255, 255)",
+                  marginTop: "4%",
+                  marginBottom: "4%",
+                }}
+              >
                 <Card.Header>
                   <u>{token.name} Faucet</u>
                 </Card.Header>
 
-                {!token.status ?
+                {!token.status ? (
                   <Card.Body>
                     <p>
                       You can get Test <strong>{token.name} </strong>
                     </p>
                     <Button
-                      style={{ marginTop: '10px' }}
+                      style={{ marginTop: "10px" }}
                       variant="success"
-                      onClick={() =>
-                        handleGetTestTokens(token.address)
-                      }
+                      onClick={() => handleGetTestTokens(token.address)}
                     >
-                    {processing ?
-                      <div className="d-flex align-items-center">
-                        Processing
-                        <span className="loading ml-2"></span>
-                      </div>
-                        :
-                      <div>
-                        GET 100 {token.name}
-                      </div>
-                    }
+                      {processing ? (
+                        <div className="d-flex align-items-center">
+                          Processing
+                          <span className="loading ml-2"></span>
+                        </div>
+                      ) : (
+                        <div>GET 100 {token.name}</div>
+                      )}
                     </Button>
                   </Card.Body>
-                  :
+                ) : (
                   <Card.Body>
                     <p style={{ color: "gray" }}>
                       You have already claimed your 100 {token.name}.
-                    </p>                    
+                    </p>
                   </Card.Body>
-                  }
-                </Card>
-              ))}
-            </Card.Body>
-          </Card>
+                )}
+              </Card>
+            ))}
+          </Card.Body>
+        </Card>
 
-          <Card className="hidden-card"></Card>
-        </CardDeck>
+        <Card className="hidden-card"></Card>
+      </CardDeck>
 
+      <AlertModal
+        open={errorModal.open}
+        toggle={() =>
+          setErrorModal({
+            ...errorModal,
+            open: false,
+          })
+        }
+      >
+        {errorModal.msg}
+      </AlertModal>
 
-        <AlertModal
-          open={errorModal.open}
-          toggle={() => setErrorModal({
-            ...errorModal, open: false
-          })}
-        >
-          {errorModal.msg}
-        </AlertModal>
-
-        <SuccessModal
-          open={successModal.open}
-          toggle={() => setSuccessModal({
-            ...successModal, open: false
-          })}
-        >
-          {successModal.msg}
-        </SuccessModal>
-      </div >
+      <SuccessModal
+        open={successModal.open}
+        toggle={() =>
+          setSuccessModal({
+            ...successModal,
+            open: false,
+          })
+        }
+      >
+        {successModal.msg}
+      </SuccessModal>
+    </div>
   );
 }

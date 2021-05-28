@@ -13,8 +13,9 @@ export default function ImageBlock({ allNft }) {
                 <div className="image-block">
                   <a
                     href={allNft[key].baseTokenURI}
-                    target="_blank"
-                    rel="noreferrer"
+                    data-fancybox="gallery"
+                    // target="_blank"
+                    // rel="noreferrer"
                   >
                     <Image src={allNft[key].baseTokenURI} fluid />
                   </a>

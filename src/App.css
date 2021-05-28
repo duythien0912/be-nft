@@ -613,8 +613,14 @@ a {
   cursor: pointer;
   /* display: inline-block; */
 }
-
+.yellow-text{
+  color: #ffc107;
+}
 a:hover {
   color: white;
   text-decoration: none;
+}
+
+.close{
+  color: white !important;
 }
