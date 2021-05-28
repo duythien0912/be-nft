@@ -1,12 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="85" height="85" viewBox="0 0 85 85">
-  <g id="Profile" transform="translate(-59 -111)">
-    <rect id="Rectangle_2847" data-name="Rectangle 2847" width="85" height="85" rx="42.5" transform="translate(59 111)" fill="#313131"/>
-    <g id="Group_990" data-name="Group 990" transform="translate(76.85 133.949)">
-      <circle id="Ellipse_13" cx="12.24" cy="12.24" r="12.24" transform="translate(12.665 0)" fill="none" stroke="#fff" stroke-width="1.5"/>
-      <g id="Ellipse_17551" transform="translate(0 24.055)">
-        <path id="Path_505" data-name="Path 505" d="M4.6,14.45A28.737,28.737,0,0,1,26.87.17C27.72.085,28.655,0,29.59,0c.85,0,1.785,0,2.635.085A28.749,28.749,0,0,1,54.58,14.365" transform="translate(-4.6)" fill="none"/>
-        <path id="Path_506" data-name="Path 506" d="M5.1,14.995c.085-.17.17-.255.255-.425a28.344,28.344,0,0,1,48.62,0c.085.17.17.255.255.425" transform="translate(-4.675 -0.12)" fill="none" stroke="#fff" stroke-width="1.5"/>
-      </g>
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="85" height="85" viewBox="0 0 85 85"><g id="Profile" transform="translate(-59 -111)"><rect id="Rectangle_2847" width="85" height="85" fill="#313131" data-name="Rectangle 2847" rx="42.5" transform="translate(59 111)"/><g id="Group_990" data-name="Group 990" transform="translate(76.85 133.949)"><circle id="Ellipse_13" cx="12.24" cy="12.24" r="12.24" fill="none" stroke="#fff" stroke-width="1.5" transform="translate(12.665 0)"/><g id="Ellipse_17551" transform="translate(0 24.055)"><path id="Path_505" fill="none" d="M4.6,14.45A28.737,28.737,0,0,1,26.87.17C27.72.085,28.655,0,29.59,0c.85,0,1.785,0,2.635.085A28.749,28.749,0,0,1,54.58,14.365" data-name="Path 505" transform="translate(-4.6)"/><path id="Path_506" fill="none" stroke="#fff" stroke-width="1.5" d="M5.1,14.995c.085-.17.17-.255.255-.425a28.344,28.344,0,0,1,48.62,0c.085.17.17.255.255.425" data-name="Path 506" transform="translate(-4.675 -0.12)"/></g></g></g></svg>
