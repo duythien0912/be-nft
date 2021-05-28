@@ -113,10 +113,9 @@ export default function CreateNft() {
         addCouponState.couponTokenSymbol,
         addCouponState.ticketBuyToken,
         addCouponState.ticketPrice,
-        // addCouponState.distInterval,
-        // addCouponState.ticketBuyDuration,
         tokenBaseUrl,
-        dataBaseUrl
+        dataBaseUrl,
+        userAddress
       )
       .send()
       .on("transactionHash", () => {
