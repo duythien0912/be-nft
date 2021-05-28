@@ -8,7 +8,7 @@ export default function VideoBlock({ allNft }) {
   return (
     <Col className="">
       <Row>
-        {Object.keys(allNft || {}).map(function (key, i) {
+        {Object.keys(allNft || {}).map(function (key, _i) {
           if (allNft[key].type === "video") {
             return (
               <Col key={key} xs={4} className="mb-4 fadein">

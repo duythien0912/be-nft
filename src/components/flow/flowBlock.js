@@ -10,13 +10,20 @@ export default function FlowBlock({
 }) {
   var bodyWidget = (
     <div className="fadein flow-block">
-      <Image className="img-bg-flow-block" src={imgSrc} rounded fluid></Image>
+      <Image
+        loading="lazy"
+        className="img-bg-flow-block"
+        src={imgSrc}
+        rounded
+        fluid
+      ></Image>
       <div className="bg-flow-block"></div>
       <div className="left-bg-flow-block"></div>
       <div className="content-block">
         <Row>
           <Col className="mr-4 cover-block" xs>
             <Image
+              loading="lazy"
               className="flow-main-image"
               src={imgSrc}
               rounded

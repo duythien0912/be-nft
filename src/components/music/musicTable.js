@@ -32,6 +32,7 @@ export default function MusicTable({ allNft }) {
                   <td className="logo-col">
                     <a data-fancybox="gallery" href={allNft[key].baseTokenURI}>
                       <Image
+                        loading="lazy"
                         className="music-icon mr-2 fadein"
                         src={allNft[key].baseTokenURI}
                         rounded

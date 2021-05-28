@@ -48,10 +48,10 @@ export default function CreateNft() {
     msg: "",
     open: false,
   });
-  const [tokens] = useState([
-    { name: "BNB", address: "0x2B8fF854c5e16cF35B9A792390Cc3a2a60Ec9ba2" },
-    { name: "USDC", address: "0x65471bdCDb3720Dc07B914756884b50a2b4395fb" },
-  ]);
+  // const [tokens] = useState([
+  //   { name: "BNB", address: "0x2B8fF854c5e16cF35B9A792390Cc3a2a60Ec9ba2" },
+  //   { name: "USDC", address: "0x65471bdCDb3720Dc07B914756884b50a2b4395fb" },
+  // ]);
 
   const [nftType] = useState([
     { name: "Music", value: "music" },
@@ -69,20 +69,6 @@ export default function CreateNft() {
   const handleCreateCoupon = async () => {
     let tokenBaseUrl = "";
     let dataBaseUrl = "";
-
-    if (addCouponState.image) {
-      setDeploying(true);
-      const ipfsHash = await deployImage();
-      tokenBaseUrl = `https://ipfs.io/ipfs/${ipfsHash}`;
-      setDeploying(false);
-    }
-
-    if (addCouponState.data) {
-      setDeploying(true);
-      const ipfsHash = await deployDataFile();
-      dataBaseUrl = `https://ipfs.io/ipfs/${ipfsHash}`;
-      setDeploying(false);
-    }
 
     if (addCouponState.image === null) {
       setErrorModal({
@@ -102,6 +88,20 @@ export default function CreateNft() {
         msg: "Please upload Data File when choose music or video NFT type",
       });
       return;
+    }
+
+    if (addCouponState.image) {
+      setDeploying(true);
+      const ipfsHash = await deployImage();
+      tokenBaseUrl = `https://ipfs.io/ipfs/${ipfsHash}`;
+      setDeploying(false);
+    }
+
+    if (addCouponState.data) {
+      setDeploying(true);
+      const ipfsHash = await deployDataFile();
+      dataBaseUrl = `https://ipfs.io/ipfs/${ipfsHash}`;
+      setDeploying(false);
     }
 
     console.log(addCouponState);
@@ -136,7 +136,7 @@ export default function CreateNft() {
           open: true,
           msg: error.message,
         });
-        console.log(error.message);
+        console.log(error);
       });
   };
 
@@ -393,7 +393,7 @@ export default function CreateNft() {
               <Row>
                 <Col className=""></Col>
                 <Col style={{ paddingLeft: "0px" }}>
-                  {addCouponState.image ? (
+                  {addCouponState.image && (
                     <Row>
                       <Col>
                         <Image
@@ -403,7 +403,7 @@ export default function CreateNft() {
                         ></Image>
                       </Col>
                     </Row>
-                  ) : null}
+                  )}
                 </Col>
               </Row>
 

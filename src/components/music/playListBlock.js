@@ -12,13 +12,14 @@ export default function PlayListBlock({ allNft }) {
               <Col xs={2} className="">
                 <a data-fancybox="gallery" href={allNft[key].baseTokenURI}>
                   <Image
+                    loading="lazy"
                     className="fadein"
                     src={allNft[key].baseTokenURI}
                     rounded
                     fluid
                   />
                 </a>
-{/* 
+                {/* 
                 <Image
                   className="fadein"
                   src={allNft[key].baseTokenURI}

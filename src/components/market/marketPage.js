@@ -94,6 +94,7 @@ export default function MarketPage() {
                         href="javascript:void(0)"
                       >
                         <Image
+                          loading="lazy"
                           className="fadein"
                           src={allNft[key].baseTokenURI}
                           rounded

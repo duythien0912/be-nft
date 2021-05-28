@@ -11,7 +11,10 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: ["react"],
+  plugins: ["react", "only-warn"],
   rules: {
+    "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+    "react/prop-types": ["off"],
+    "react/react-in-jsx-scope": ["off"],
   },
 };

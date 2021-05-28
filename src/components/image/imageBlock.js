@@ -17,7 +17,11 @@ export default function ImageBlock({ allNft }) {
                     // target="_blank"
                     // rel="noreferrer"
                   >
-                    <Image src={allNft[key].baseTokenURI} fluid />
+                    <Image
+                      loading="lazy"
+                      src={allNft[key].baseTokenURI}
+                      fluid
+                    />
                   </a>
                   <p className="one-line title text-left pt-1 pl-2 pr-2 pb-1 mb-0">
                     {allNft[key].name}

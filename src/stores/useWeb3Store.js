@@ -35,10 +35,6 @@ const useWeb3Store = createStore(
 
       // Setup web3 bsc connect provider
       init: () => {
-        window.web3 = new Web3(
-          "https://data-seed-prebsc-1-s1.binance.org:8545"
-        );
-
         var _bePublicContract = new (get().web3.eth.Contract)(
           config.couponFactoryAbi,
           config.couponFactoryAddress
@@ -58,8 +54,6 @@ const useWeb3Store = createStore(
         try {
           console.log("initMetaMask");
 
-          await window?.ethereum?.enable();
-
           // 56 - bsc mainnet
           // 96 - bsc testnet
           if (
@@ -71,12 +65,13 @@ const useWeb3Store = createStore(
             }));
           }
 
-          var _eth = new Web3(window?.ethereum).eth;
-          var _getAccounts = await _eth.getAccounts();
+          var _getAccounts = await window?.ethereum?.send(
+            "eth_requestAccounts"
+          );
 
-          var _userAddress = _getAccounts[0];
+          var _userAddress = _getAccounts.result[0];
 
-          var _beUserContract = new (get().web3.eth.Contract)(
+          var _beUserContract = new ((new Web3(window.ethereum)).eth.Contract)(
             config.couponFactoryAbi,
             config.couponFactoryAddress,
             { from: _userAddress }
@@ -86,7 +81,11 @@ const useWeb3Store = createStore(
             window.location.reload();
           });
 
-          if (_userAddress && _beUserContract)
+          if (_userAddress && _beUserContract) {
+            window.userAddress = _userAddress;
+            console.log("_userAddress", _userAddress);
+            console.log("_beUserContract", _beUserContract);
+
             set((_state) => ({
               userAddress: _userAddress,
               beUserContract: _beUserContract,
@@ -95,6 +94,7 @@ const useWeb3Store = createStore(
                 : true,
               wasConnectMetaMask: true,
             }));
+          }
         } catch (e) {
           console.log("ERROR initContract: ", e);
           set((_state) => ({
